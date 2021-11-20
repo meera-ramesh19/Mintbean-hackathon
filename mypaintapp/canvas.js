@@ -16,11 +16,15 @@ let index=-1;
 let eraser=false;
 let startPosition = {x: 0, y: 0};
 let eraser_width=10;
-let erasing="false"
+let erasing="false";
+let lineCoordinates = {x: 0, y: 0};
+let textCoordinates = {x: 0, y: 0};
+let pointCoordinates = {x: 0, y: 0};
 
+let strokeStyle='black';
 // let tool="freedraw"
 
-
+let coordWidth=1
 // setup config variables and start the program
 
 const canvas = document.querySelector('#my-canvas')
@@ -29,6 +33,7 @@ let ctx = canvas.getContext('2d');
 //determine the height and the wisth of the canvas
 ctx.canvas.width = window.innerWidth-60
 ctx.canvas.height = window.innerHeight-60
+ctx.globalAlpha=1;
 
 // fill the canvas with the specified color
 // not sure why it is not working needs to be fixed
@@ -49,12 +54,14 @@ document.addEventListener("touchend", stop, false);
 document.addEventListener("mouseout", stop, false);
 window.addEventListener("resize", resize);
 
-
 resize();
 
 
 //tools eventListener
-document.querySelector("#line").addEventListener('click',drawLine);
+document.querySelector("#line").addEventListener('click', line);
+document.querySelector("#fill").addEventListener('click', fillColor);
+ document.querySelector("#points").addEventListener('click', drawPoints);
+// document.querySelector("#text").addEventListener('click', textDraw);
 document.querySelector('#eraser').addEventListener('click', eraseImage);
 document.querySelector('#clear').addEventListener('click', clearImage);
 
@@ -62,7 +69,7 @@ document.querySelector('#clear').addEventListener('click', clearImage);
 function init () { 
     // initiating 2D context on it
        ctx.strokeStyle=strokeColor;
-       ctx.lineWidth=lineWidth;
+       ctx.lineWidth=linebarWidth();
   }
 
 
@@ -86,6 +93,7 @@ function start(event) {
     document.addEventListener("mousemove", draw, false);
     document.addEventListener("touchmove", draw, false);
     reposition(event);
+    
  } 
  
 
@@ -96,7 +104,7 @@ function stop() {
       drawing=false;
    }
      document.removeEventListener("mousemove", draw, false);
-  }
+}
 
 
 
@@ -108,7 +116,7 @@ function draw(event) {
           ctx.beginPath();
     //  if (mode!="eraser"){
             //specifies the current line width
-            ctx.lineWidth = lineWidth;
+            ctx.lineWidth = linebarWidth();
             //style of endcaps for a line
             ctx.lineCap = "round";
             ctx.lineJoin ="round";
@@ -124,44 +132,214 @@ function draw(event) {
             ctx.lineTo(coord.x, coord.y);
             //draws the path on to the canvas
             ctx.stroke();
-           
+            
+            // ctx.font = "16px Arial";
+            // // ctx.lineWidth = coordWidth;
+            // let gradient = ctx.createLinearGradient(0, 0, c.width, 0);
+            // gradient.addColorStop("0", "magenta");
+            // gradient.addColorStop("0.5", "blue");
+            // gradient.addColorStop("1.0", "red");
+            // // Fill with gradient
+            // ctx.fillStyle = gradient;
+            // ctx.fillText("X: "+coord.x+", Y: "+coord.y, 10, 20,500);
        }
+      
      lastX=coord.x;
      lastY=coord.y;
-     console.log(lastX,lastY);
+     
      event.preventDefault();
    }
    
 
 
+function crayon(event){
 
 
 
-function drawLine(event){
-  // Tmp canvas is always cleared up before drawing.
-    ctx.clearRect(0, 0, canvas.width,canvas.height);
-    ctx.beginPath();
-    ctx.moveTo(startPosition.x, startPosition.y);
-    ctx.lineTo(event.offsetX,  event.offsetY);
-    ctx.stroke();
-    ctx.closePath();
+
 
 }
 
 
+function drawPoints(event){
 
+    tool="points";
+    document.removeEventListener("mousemove", draw, false);
+    document.removeEventListener("mousedown", draw, false);
+    var pointSize = 3;
+    let startPosition = {x: 0, y: 0};
+    pointCoordinates.x=event.offsetX;
+    pointCoordinates.y=event.offsetY;
+    console.log(pointCoordinates);
+    let isDrawStart = false;
+
+    function getPosition(event){
+        var rect = canvas.getBoundingClientRect();
+        var x = event.clientX - canvas.offsetleft;
+        var y = event.clientY - canvas.offsettop;
+           
+        drawCoordinates(x,y);
+   }
+   
+   function drawCoordinates(x,y){	
+   
+       ctx.fillStyle = "#ff2626"; // Red color
+       ctx.beginPath();
+       ctx.arc(x, y, pointSize, 0, Math.PI * 2, true);
+       ctx.fill();
+   }
+    
+ 
+     const readyDraw = (event) => {
+        // startPosition = getPosition(event);
+        isDrawStart = true;
+     }
+     
+     const lineDraw = (event) => {
+       if(!isDrawStart) return;
+        getPosition(event);
+       // clearCanvas();
+       
+     }
+     
+     const stopDraw = (event) => {
+       isDrawStart = false;
+     }
+     
+     const clearCanvas = () => {
+        ctx.clearRect(0, 0, canvasEle.width, canvasEle.height);
+     }
+     
+     canvas.addEventListener('mousedown', readyDraw);
+     canvas.addEventListener('mousemove', lineDraw);
+     canvas.addEventListener('mouseup', stopDraw);
+     
+     canvas.addEventListener('touchstart',  readyDraw);
+     canvas.addEventListener('touchmove',  lineDraw);
+     canvas.addEventListener('touchend', stopDraw);
+ 
+
+}
+
+function line(event){
+//ClientX -away from the edge of the body/screen to mouse click position
+//Screenx -away from the edge of the entire computer screen
+//offsetX -same as clientx minus the difference of the element/pixels from the start of the element edge/border of the canvas
+    document.removeEventListener("mousemove", draw, false);
+    document.removeEventListener("mousedown", draw, false);
+    
+     tool="line";
+     let startPosition = {x: 0, y: 0};
+     lineCoordinates.x=event.offsetX;
+     lineCoordinates.y=event.offsetY;
+     console.log(lineCoordinates)
+     let isDrawStart = false;
+    
+    const getClientOffset = (event) => {
+        const {pageX, pageY} = event.touches ? event.touches[0] : event;
+        const x = pageX - canvas.offsetLeft;
+        const y = pageY - canvas.offsetTop;
+    
+        return {
+           x,
+           y
+        } 
+    }
+    
+    const drawLines = () => {
+       ctx.beginPath();
+       ctx.lineWidth = linebarWidth();
+       ctx.lineCap = "round";
+       ctx.lineJoin ="round";
+       ctx.moveTo(startPosition.x, startPosition.y);
+       ctx.lineTo(lineCoordinates.x, lineCoordinates.y);
+       ctx.stroke();
+    }
+    
+    const readyDraw = (event) => {
+       startPosition = getClientOffset(event);
+       isDrawStart = true;
+    }
+    
+    const lineDraw = (event) => {
+      if(!isDrawStart) return;
+      
+      lineCoordinates = getClientOffset(event);
+      // clearCanvas();
+      drawLines();
+    }
+    
+    const stopDraw = (event) => {
+      isDrawStart = false;
+    }
+    
+    const clearCanvas = () => {
+       ctx.clearRect(0, 0, canvasEle.width, canvasEle.height);
+    }
+    
+    canvas.addEventListener('mousedown', readyDraw);
+    canvas.addEventListener('mousemove', lineDraw);
+    canvas.addEventListener('mouseup', stopDraw);
+    
+    canvas.addEventListener('touchstart',  readyDraw);
+    canvas.addEventListener('touchmove',  lineDraw);
+    canvas.addEventListener('touchend', stopDraw);
+
+  
+//     lineWidth=linebarWidth()
+//   //  canvas is always cleared up before drawing.
+//     ctx.clearRect(0, 0, canvas.width,canvas.height);
+//     ctx.beginPath();
+//     ctx.moveTo(startPosition.x, startPosition.y);
+   
+//     ctx.lineTo(lineCoordinates.x, lineCoordinates.y);
+//     ctx.stroke();
+//     ctx.closePath();
+
+}
+
+function fillColor(){
+// Start a new path to begin drawing in a new color.
+ctx.closePath();
+ctx.beginPath();
+if(strokeStyle==='black' && strokeColor==='black'){
+    strokeStyle='white'
+}
+ctx.fillStyle = ctx.strokeStyle;
+ctx.fillRect(0, 0, canvas.width, canvas.height);
+}
+
+function textDraw(event){
+    tool="text"
+	ctx.clearRect(0, 0, canvas.width, canvas.height);
+     	mouse.x = event.offsetX 
+		mouse.y =  event.offsetY 	
+
+    	var x = Math.min(mouse.x, textCoordinates.x);
+    	var y = Math.min(mouse.y, textCoordinates.y);
+    	var width = Math.abs(mouse.x - textCoordinates.x);
+    	var height = Math.abs(mouse.y - textCoordinates.y);
+     
+    	textarea.style.left = x + 'px';
+    	textarea.style.top = y + 'px';
+    	textarea.style.width = width + 'px';
+    	textarea.style.height = height + 'px';
+     
+    	textarea.style.display = 'block';
+}
 
 //function to change the strokeSize
-function changeWidth(){
-    ctx.lineWidth = strokes.value
-    console.log(lineWidth);
+function linebarWidth(){
+    let widthLine = document.getElementById("myRange").value;
+    return widthLine;
+
 }
 
 //Function to erase image 
 function eraseImage(event){
 
     erasing="true"
-    
+    tool="eraser"
 
 //mdn code to clear a portion of the canvas
 //  ctx.beginPath();
@@ -181,9 +359,13 @@ function eraseImage(event){
 // ctx.clearRect(10, 10, 120, 100);
 
 }
+
+
+
 //Function to clear image 
 
 function clearImage(){
+    tool="clear"
     // bind event handler to clear button
      ctx.beginPath();
      ctx.setTransform(1, 0, 0, 1, 0, 0);

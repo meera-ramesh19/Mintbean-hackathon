@@ -137,10 +137,10 @@ input{
         /* margin:2rem 1rem;
         border:2px solid black;
         max-width:1200px;
-        width:90vw;
-        height:100vh;
-        overflow:hidden; */
+       width:80vw;
         
+        overflow:hidden; */
+        height:85vh;
         margin:4rem auto;
     
     }
