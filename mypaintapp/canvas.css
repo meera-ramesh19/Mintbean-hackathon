@@ -11,7 +11,7 @@
     border:2px solid black;
     max-width:1200px;
     width:90vw;
-    height:100vh;
+    height:80vh;
     overflow:hidden;
 
 }
@@ -50,7 +50,7 @@ button{
     display:block;
     margin:2rem auto;
     width:90%;
-    height:80vh;
+    height:60vh;
     background:whitesmoke;
     /* border:2px solid black; */
     box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
@@ -131,7 +131,7 @@ input{
 
 
 
-@media(min-width: 600px){
+@media(min-width: 1000px){
 
     .container{
         /* margin:2rem 1rem;
@@ -162,13 +162,13 @@ input{
    
     .left-panel{
         width:15%;
-        margin-top:2rem;
+        margin-top:1rem;
         /* display:block;*/
         border:2px solid black; 
     }
     .right-panel{
         width:80%;
-        height:85vh;
+        height:65vh;
         margin-top:1rem;
         /* display:block;
         margin:0 auto;
@@ -197,7 +197,7 @@ input{
     #brushWidth{
         text-align:center;
         width:200px;
-        height:180px;
+        height:110px;
         padding:0.5rem 0rem;
         display:block;
         /* border:2px solid black; */
@@ -217,7 +217,7 @@ input{
         display:block;
         justify-content: center;
         align-items: center;
-        padding:1rem 0;
+        padding:0.5rem 0;
     }
    
         

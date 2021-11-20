@@ -6,64 +6,74 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto:100" rel="stylesheet"> 
     <script src="https://kit.fontawesome.com/46b13243e4.js" crossorigin="anonymous"></script>
  </head>
-  <body>
+ <body>
     <h1>CANVAS PAINT APP</h1>
 <div class="container">
 
 <div class="toolbar">
     <!-- <ul>
        <li> -->
-        <button class="btn" type="button" data-divbtn="pencil" title="Pencil">
+        <button class="btn" type="button" id="pencil" data-divbtn="pencil" title="Pencil">
             <img class="write-tools" src="https://img.icons8.com/ios-filled/20/000000/pencil--v1.png"/>     
         </button>
     <!-- </li>
+        <li> -->
+            <!-- <button class="btn" type="button" id="brush" data-divbtn="brush" title="Brush">
+                <img src="https://img.icons8.com/ios-filled/20/000000/line.png"/>    
+            </button> -->
+        <!-- </li>
     <li> -->
-        <button class="btn" type="button" data-divbtn="line" title="Line">
+        <button class="btn" type="button" id="line" data-divbtn="line" title="Line">
             <img src="https://img.icons8.com/ios-filled/20/000000/line.png"/>    
         </button>
     <!-- </li>
     <li> -->
-        <button class="btn" type="button" data-divbtn="text" title="Text">
+        <!-- <button class="btn" type="button" id="text" data-divbtn="text" title="Text">
             <img src="https://img.icons8.com/ios-glyphs/20/000000/text.png"/>
-        </button>
+        </button> -->
     <!-- </li> -->
     <!-- <li> -->
-        <button class="btn" type="button" data-divbtn="fill" title="Fill">
+        <!-- <button class="btn" type="button" id="fill" data-divbtn="fill" title="Fill">
             <img src="https://img.icons8.com/material-sharp/20/000000/fill-color.png"/>
-        </button>
+        </button> -->
     <!-- </li>
     <li> -->
-        <button class="btn" type="button" data-divbtn="rectangle" title="Rectangle">
+        <button class="btn" type="button" id="rectangle" data-divbtn="rectangle" title="Rectangle">
             <img src="https://img.icons8.com/fluency-systems-regular/20/000000/rounded-rectangle.png"/>
         </button>
     <!-- </li>
     <li> -->
-        <button class="btn" type="button" data-divbtn="circle" title="Circle">
+        <button class="btn" type="button" id="circle" data-divbtn="circle" title="Circle">
             <img src="https://img.icons8.com/ios-filled/20/000000/circled.png"/>
         </button>
     <!-- </li>
     <li> -->
-        <button class="btn" type="button" data-divbtn="ellipse" title="Ellipse">
+        <button class="btn" type="button" id="ellipse" data-divbtn="ellipse" title="Ellipse">
             <img src="https://img.icons8.com/ios-filled/20/000000/ellipse-stroked--v2.png"/>  
         </button>
     <!-- </li>
+        <li> -->
+        <button class="btn" type="button" id="eraser" data-divbtn="eraser" title="Eraser">
+            <img src="https://img.icons8.com/ios-glyphs/20/000000/eraser.png"/>
+        </button>
+         <!-- </li>
     <li> -->
-        <button class="btn" type="button" data-divbtn="reset" title="reset">
+        <button class="btn" type="button" id="clear" data-divbtn="clear" title="Clear">
         <img src="https://img.icons8.com/ios-filled/20/000000/recurring-appointment.png"/>
         </button>
     <!-- </li>
     <li> -->
-        <button class="btn" type="button" data-divbtn="save" title="Save">
+        <button class="btn" type="button" id="save" data-divbtn="save" title="Save">
             <img src="https://img.icons8.com/material-rounded/25/000000/save.png"/>
         </button>
     <!-- </li>
     <li> -->
-        <button class="btn" type="button" data-divbtn="open" title="open">
+        <button class="btn" type="button" id="open" data-divbtn="open" title="Open">
             <img src="https://img.icons8.com/ios-filled/20/000000/opened-folder.png"/>
         </button>
     <!-- </li>
     <li> -->
-        <button class="btn" type="button" data-divbtn="open" title="open">
+        <button class="btn" type="button" id="undo" data-divbtn="undo" title="Undo">
         <img src="https://img.icons8.com/ios-glyphs/20/000000/undo.png"/>
        </button>
 
@@ -120,11 +130,15 @@
   
 
 <div class="right-panel">
-   <div id="sketch">
-        <canvas id="canvas"></canvas>
-    </div>
+   
+        <canvas id="my-canvas"></canvas>
+   
 </div>
 
 </div>  
+</div>
+<script src="canvas.js"></script>
+</body>
+</html>
 
      

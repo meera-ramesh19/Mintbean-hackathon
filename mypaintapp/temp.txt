@@ -1,0 +1,46 @@
+ let colors=[
+//     {name:'red',color:'#FF0000',},
+   
+//     {name:'darkred', color:'#A70D2A',},
+    
+//     {name:'indianred', color:'#CD5C5C',},
+   
+  
+  
+//    {name:'green', color:'#008000',},
+   
+//      {name:'lightgreen', color:'#90ee90',},
+//    ,
+//   {name:'mediumseagreen', color:'#3CB371',},
+  
+//   {name:'rebeccapurple', color:'#663399',},
+    
+//      {name:'amethyst', color:'#9966cc',},
+    
+//       {name:'mediumpurple', color:'#9370DB',},
+   
+//       {name:'orange', color:' #ffa500',},
+
+//       {name:'tangerine', color:' #f28500',},
+
+//       {name:'pastelorange', color:' #ffb347',},
+    
+//      {name:'dodgerblue', color:'#1e90ff',},
+    
+//     {name:'skyblue', color:'#6698FF',},
+    
+//   {name: 'darkblue', color:'#00008b',},
+
+//     {name:'gray', color:'#808080',},
+//     // 'gray',
+//     {name:'black', color:'#000000',},
+//     // 'lightslategray',
+//     { name:'yellow', color:'#FFFF00',},
+//     // 'yellow',
+//     {name:'lightyellow', color:'#FFFFE0',},
+//     // 'lightyellow',
+//   {name:'bananayellow', color:'#FFE135',},
+//    // 'bananayellow',
+//    {name:'lemonyellow', color:'#FFF44F',},
+//     // 'lemonyellow',
+//   ];
