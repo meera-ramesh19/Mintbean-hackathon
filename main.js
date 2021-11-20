@@ -53,7 +53,9 @@ document.addEventListener("touchmove", draw, false);
 document.addEventListener("mousedown", start, false);
 document.addEventListener("mouseup", stop, false);
 window.addEventListener("resize", resize);
-
+document.querySelector('#color').addEventListener('hover', ChangeColor);
+document.querySelector('#clear').addEventListener('click', ClearImage);
+document.querySelector('#erase').addEventListener('click', EraseImage);
 resize();
 
 function resize() {      
@@ -101,11 +103,39 @@ function draw(event) {
 
 //Function to erase image not working needs to be fixed
 
-function EraseImage(){
+function ClearImage(){
   // bind event handler to clear button
-      document.getElementById('erase').addEventListener('click', ()=>{
-          ctx.clearRect(0, 0, canvas.width, canvas.height);
-        }, false);
+ 
+   ctx.clearRect(0, 0, canvas.width, canvas.height);
+   // ctx.beginPath();
+//         ctx.fillStyle = "rgba(0, 0, 0, 255)";
+//         ctx.fillRect(0, 0, canvas.width, canvas.height);    
+//         ctx.stroke();
+    
+ 
+      // document.getElementById('erase').addEventListener('click', ()=>{
+      //     ctx.clearRect(0, 0, canvas.width, canvas.height);
+      //   }, false);
+
+}
+
+
+//function to erase image
+function EraseImage(){
+  ctx.globalCompositeOperation="destination-out";
+//     if (bMouseDown) {
+// 			context.strokeStyle = strokeStyle;
+//             context.lineWidth = 5;
+//             context.beginPath();
+//             if(bErasing == true){
+//               context.globalCompositeOperation="destination-out";
+//             }else{
+//               context.globalCompositeOperation="source-over";
+//             }
+//             context.moveTo(e.pageX - this.offsetLeft, e.pageY - this.offsetTop);
+//             context.lineTo(e.pageX ,e.pageY);
+//             context.stroke();
+
 
 }
 

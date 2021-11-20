@@ -15,54 +15,91 @@
    <div class="wrapper">
       <div class="toolbar">
         
-          <a href="#" id="pencil" onclick="ChangeTool(pencil)">
+          <a href="#" id="pencil">
+
+          <!-- </a> onclick="ChangeTool(pencil)"> -->
               <img src="https://img.icons8.com/ios-filled/20/000000/pencil--v1.png"/> </a>
         
              
-          <a href="#" id="brush" onclick="ChangeTool(brush)">
+          <a href="#" id="brush">
+
+          <!-- </a> onclick="ChangeTool(brush)"> -->
            <img src="https://img.icons8.com/external-vitaliy-gorbachev-fill-vitaly-gorbachev/20/000000/external-brush-graphic-design-vitaliy-gorbachev-fill-vitaly-gorbachev.png"/> </a>
       
         
       
-      <a href="#" id="weight" onclick="ChangeWeight()">
+      <a href="#" id="weight">
+<!--         
+      </a> onclick="ChangeWeight()"> -->
           <input type="number" id="weight" min="2" max="200" value="3"/>
                </a>
         
-      <a href="#" id="color" onclick="ChangeColor()">
+      <a href="#" id="color">
+
+      <!-- </a> onclick="ChangeColor()"> -->
        <img src="https://img.icons8.com/ios-filled/20/000000/paint-palette.png"/>
         <div id="container"></div>
        </a>
       
          
-        <a href="#" id="line" onclick="ChangeTool(line)">
+        <a href="#" id="line">
+<!--           
+        </a> onclick="ChangeTool(line)"> -->
           <img src="https://img.icons8.com/ios-filled/20/000000/line.png"/></a>
        
-          <a href="#" id="rectangle" onclick="ChangeTool(rectangle)">
+          <a href="#" id="rectangle">
+<!--             
+          </a> onclick="ChangeTool(rectangle)"> -->
        <img src="https://img.icons8.com/fluency-systems-regular/20/000000/rounded-rectangle.png"/>
           </a>
-            <a href="#" id="circle" onclick="ChangeTool(circle)">
+            <a href="#" id="circle">
+
+            <!-- </a> onclick="ChangeTool(circle)"> -->
       <img src="https://img.icons8.com/ios-filled/20/000000/circled.png"/></a>
         
-              <a href="#" id="polygon" onclick="ChangeTool(polygon)">
+              <a href="#" id="polygon">
+<!--                 
+              </a> onclick="ChangeTool(polygon)"> -->
       <img src="https://img.icons8.com/ios-filled/20/000000/polygone.png"/></a>
         
-                <a href="#" id="ellispe" onclick="ChangeTool(ellipse)">
+                <a href="#" id="ellispe">
+
+                <!-- </a> onclick="ChangeTool(ellipse)"> -->
       <img src="https://img.icons8.com/ios-filled/20/000000/ellipse-stroked--v2.png"/></a>
         
-                  <a href="#" id="rectangle" onclick="ChangeTool(rectangle)">
+                  <a href="#" id="rectangle">
+<!--                     
+                  </a> onclick="ChangeTool(rectangle)"> -->
       <img src="https://img.icons8.com/fluency-systems-filled/20/000000/rounded-rectangle-stroked.png"/></a>
         
-        <a class="selected" href="#" id="undo" onclick="UndoImage()">
+        <a class="selected" href="#" id="undo">
+<!--           
+        </a> onclick="UndoImage()"> -->
         <img src="https://img.icons8.com/ios-glyphs/20/000000/undo.png"/>
         </a>
         
-         <a class="selected" href="#" id="erase" onclick="EraseImage()">
+         <a class="selected" href="#" id="erase">
+
+         <!-- </a> onclick="EraseImage()"> -->
         <img src="https://img.icons8.com/ios-glyphs/20/000000/eraser.png"/>
         </a>
-         <a class="selected" href="#" id="open" onclick="OpenImage()">
-         <img src="https://img.icons8.com/ios-filled/20/000000/opened-folder.png"/> </a>
-            <a href="#" id="save" onclick="SaveImage()">
-      <img src="https://img.icons8.com/material-rounded/25/000000/save.png"/></a>
+
+        <a class="selected" href="#" id="clear">
+<!--           
+        </a> onclick="ClearImage()"> -->
+          <img src="https://img.icons8.com/ios-filled/20/000000/recurring-appointment.png"/>
+          </a>
+
+         <a class="selected" href="#" id="open">
+
+         <!-- </a> onclick="OpenImage()"> -->
+         <img src="https://img.icons8.com/ios-filled/20/000000/opened-folder.png"/> 
+        </a>
+
+            <a  class="selected" href="#" id="save">
+
+            <!-- </a> onclick="SaveImage()"> -->
+               <img src="https://img.icons8.com/material-rounded/25/000000/save.png"/></a>
         
         </div><br>
         <canvas id="my-canvas" width="1000" height="1000"></canvas>
