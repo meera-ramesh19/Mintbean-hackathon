@@ -8,19 +8,22 @@ Our Project: In the spirit of Bob Ross, we built a Happy Little Painting App!
 
 - Click [here](https://happy-little-painting-app.netlify.app) to see our app and draw your own happy little trees!
 
-##Landing Page
+## Landing Page
+![Landing page](landingPage.png)
+## Tools
 
+## Optimizations
 
-##Tools
+## Lessons Learned:
 
-##Optimizations
+## Deployment:
 
-##Lessons Learned:
+## Developers/Designer:
+### Bridget Brevik, Designer
 
-##Deployment:
+### Meera Ramesh, Developer
+### Jennifer Toops, Developer
 
-##Developers:
-
-##App in Action!
+## App in Action!
 
 
