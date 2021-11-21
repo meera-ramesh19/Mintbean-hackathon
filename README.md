@@ -23,16 +23,16 @@ We deployed our app to Netlify.
 
 <!-- Please don't remove this: Grab your social icons from https://github.com/carlsednaoui/gitsocial -->
 
-![http://i.imgur.com/tXSoThF.png](https://twitter.com/theDevBee)
-![https://cdn.jsdelivr.net/npm/simple-icons@3.0.1/icons/linkedin.svg](https://www.linkedin.com/in/bridgetb)
-![http://i.imgur.com/0o48UoR.png ](https://github.com/yobee333)
+[http://i.imgur.com/tXSoThF.png](https://twitter.com/theDevBee)
+[https://cdn.jsdelivr.net/npm/simple-icons@3.0.1/icons/linkedin.svg](https://www.linkedin.com/in/bridgetb)
+[http://i.imgur.com/0o48UoR.png ](https://github.com/yobee333)
 
 ### Meera Ramesh, Developer
 <!-- Please don't remove this: Grab your social icons from https://github.com/carlsednaoui/gitsocial -->
 
-![http://i.imgur.com/tXSoThF.png](https://twitter.com/Meerarams)
-![https://cdn.jsdelivr.net/npm/simple-icons@3.0.1/icons/linkedin.svg](https://twitter.com/Meerarams)
-![http://i.imgur.com/0o48UoR.png](https://www.linkedin.com/in/meeraramesh/)
+[http://i.imgur.com/tXSoThF.png](https://twitter.com/Meerarams)
+[https://cdn.jsdelivr.net/npm/simple-icons@3.0.1/icons/linkedin.svg](https://twitter.com/Meerarams)
+[http://i.imgur.com/0o48UoR.png](https://www.linkedin.com/in/meeraramesh/)
 
 
 <!-- links to social media icons -->
@@ -59,7 +59,7 @@ We deployed our app to Netlify.
 <!-- Please don't remove this: Grab your social icons from https://github.com/carlsednaoui/gitsocial -->
 ### Jennifer Toops, Developer
 <!-- Please don't remove this: Grab your social icons from https://github.com/carlsednaoui/gitsocial -->
-
+ <a href="https://twitter.com/jennifertoops" target="blank"><img src="https://img.shields.io/twitter/follow/jennifertoops?logo=twitter&style=for-the-badge" alt="jennifertoops" /></a><a href="https://linkedin.com/in/jennifertoops" target="blank"><img src="https://cdn.jsdelivr.net/npm/simple-icons@3.0.1/icons/linkedin.svg" background-color="blue" alt="jennifertoops" height="30" width="40" /></a>
 <!-- display the social media buttons in your README -->
 
 <!-- [![http://i.imgur.com/tXSoThF.png]][https://twitter.com/theDevBee]
