@@ -1,89 +1,68 @@
-* {
-  margin: 0;
-  padding: 0;
-
-}
-.wrapper{
-  max-width:1200px;
-  margin:0 auto;
-  padding:20px;
-  font-family:"Arial";
+*{
+  box-sizing: border-box;
 }
 
-.toolbar{
-  width:100%;
-  background:#444;
-}
-  .toolbar a{
-    float:left;
-    width:7%;
-    padding:6px 0;
-    text-align:center;
-    transition:all 0.5s;
-    cursor:pointer;
-  }
-
-.toolbar a:hover{
-  background:silver;
-  
+body{
+  background-image: url(background.jpg);
+  background-repeat: no-repeat;
+  height: 100vh;
 }
 
-.selected{
-  background:#0000;
+h1{
+  font-family: 'Mansalva', cursive;
+  font-size: 2.5rem;
+  text-align: center;
 }
 
-#my-canvas{
-  width:100%;
-  border:3px solid black;
-  box-shadow:-3px 2px 9px 6px black;
-  cursor:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'  width='40' height='48' viewport='0 0 100 100' style='fill:black;font-size:24px;'><text y='50%'>✍️</text></svg>") 16 0,auto;
+p{
+  text-align: center;
+  font-family: 'Open Sans', sans-serif;
 }
 
-#img-data-div{
-  width:100%;
-  max-width:1200px;
-  height:200px;
+.easel{
+  height: 80vh;
+  width: 50%;
+  background-image: url(emptyeasel.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  margin: auto;
+  padding-top: 75px;
+  position: relative;
+
 }
 
-.toolbar a img{
-  max-width:100%;
-  height:auto;
+.slide{
+  width: 60%;
+  position: relative;
+  margin: auto;
 }
 
-#img-file{
-  text-decoration:none;
-  color:black;
-  z-index:1
-}
- 
-
-#color{
-  text-decoration:none;
-  color:black;
-/*   border:2px solid black; */
-/*   background:black; */
-/*   color:white; */
-}
-#color a:hover{
-  color:white;
-}
-#container{
-  background-color:
-  max-width:500px;
-  width:600px;
-  display:flex;
-  height:0px;
-  flex-direction:row;
-  flex-wrap:wrap;
- 
+img{
+  width: 100%;
+  margin: auto;
+  position: absolute;
+  border: 20px solid #804500;
 }
 
-#color-swatch{
-  margin:15px 5px;
-  width:20px;
-  height:20px;
-  left:200px;
-  top:0px;
-  border:2px solid black;
-  
+button{
+  width: 250px;
+  height: 50px;
+  margin-left: 75%;
+  margin-bottom: 10%;
+  border-radius: 50px;
+  color: white;
+  background-color: green;
+}
+
+
+button:hover{
+  background-color: red;
+}
+#paintbrush{
+  height: 200px;
+  width: 200px;
+  border: none;
+  position: absolute;
+  margin-left: 70%;
+  margin-top: 5%;
 }

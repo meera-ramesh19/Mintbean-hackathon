@@ -1,114 +1,35 @@
-
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="style.css">
-    <title>Mintbean PaintApp Hackathon</title>
-  
-  </head>
+
+<head>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Mansalva&family=Open+Sans&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css">
+  <title>Mintbean PaintApp Hackathon</title>
+
+</head>
+
 <body>
+  <h1>The Happy Little Painting App</h1>
+  <p>Channel your inner Bob Ross and "paint" pictures!</p>
+  <section class="easel">
+    <section class="slide">
+      <!-- <img src="https://cdn.pixabay.com/photo/2016/04/07/23/27/text-1315140_960_720.jpg"> -->
+      <img src="https://cdn.pixabay.com/photo/2020/02/05/15/47/natural-4821583_960_720.png">
+      <!-- <img src=""> -->
+    </section>
+    <img id="paintbrush" src="paintbrush.png" alt="paintbrush illustration">
+    
+
+    
+  </section>
+  <button>START</button>
 
 
-   <div class="wrapper">
-      <div class="toolbar">
-        
-          <a href="#" id="pencil">
-
-          <!-- </a> onclick="ChangeTool(pencil)"> -->
-              <img src="https://img.icons8.com/ios-filled/20/000000/pencil--v1.png"/> </a>
-        
-             
-          <a href="#" id="brush">
-
-          <!-- </a> onclick="ChangeTool(brush)"> -->
-           <img src="https://img.icons8.com/external-vitaliy-gorbachev-fill-vitaly-gorbachev/20/000000/external-brush-graphic-design-vitaliy-gorbachev-fill-vitaly-gorbachev.png"/> </a>
-      
-        
-      
-      <a href="#" id="weight">
-<!--         
-      </a> onclick="ChangeWeight()"> -->
-          <input type="number" id="weight" min="2" max="200" value="3"/>
-               </a>
-        
-      <a href="#" id="color">
-
-      <!-- </a> onclick="ChangeColor()"> -->
-       <img src="https://img.icons8.com/ios-filled/20/000000/paint-palette.png"/>
-        <div id="container"></div>
-       </a>
-      
-         
-        <a href="#" id="line">
-<!--           
-        </a> onclick="ChangeTool(line)"> -->
-          <img src="https://img.icons8.com/ios-filled/20/000000/line.png"/></a>
-       
-          <a href="#" id="rectangle">
-<!--             
-          </a> onclick="ChangeTool(rectangle)"> -->
-       <img src="https://img.icons8.com/fluency-systems-regular/20/000000/rounded-rectangle.png"/>
-          </a>
-            <a href="#" id="circle">
-
-            <!-- </a> onclick="ChangeTool(circle)"> -->
-      <img src="https://img.icons8.com/ios-filled/20/000000/circled.png"/></a>
-        
-              <a href="#" id="polygon">
-<!--                 
-              </a> onclick="ChangeTool(polygon)"> -->
-      <img src="https://img.icons8.com/ios-filled/20/000000/polygone.png"/></a>
-        
-                <a href="#" id="ellispe">
-
-                <!-- </a> onclick="ChangeTool(ellipse)"> -->
-      <img src="https://img.icons8.com/ios-filled/20/000000/ellipse-stroked--v2.png"/></a>
-        
-                  <a href="#" id="rectangle">
-<!--                     
-                  </a> onclick="ChangeTool(rectangle)"> -->
-      <img src="https://img.icons8.com/fluency-systems-filled/20/000000/rounded-rectangle-stroked.png"/></a>
-        
-        <a class="selected" href="#" id="undo">
-<!--           
-        </a> onclick="UndoImage()"> -->
-        <img src="https://img.icons8.com/ios-glyphs/20/000000/undo.png"/>
-        </a>
-        
-         <a class="selected" href="#" id="erase">
-
-         <!-- </a> onclick="EraseImage()"> -->
-        <img src="https://img.icons8.com/ios-glyphs/20/000000/eraser.png"/>
-        </a>
-
-        <a class="selected" href="#" id="clear">
-<!--           
-        </a> onclick="ClearImage()"> -->
-          <img src="https://img.icons8.com/ios-filled/20/000000/recurring-appointment.png"/>
-          </a>
-
-         <a class="selected" href="#" id="open">
-
-         <!-- </a> onclick="OpenImage()"> -->
-         <img src="https://img.icons8.com/ios-filled/20/000000/opened-folder.png"/> 
-        </a>
-
-            <a  class="selected" href="#" id="save">
-
-            <!-- </a> onclick="SaveImage()"> -->
-               <img src="https://img.icons8.com/material-rounded/25/000000/save.png"/></a>
-        
-        </div><br>
-        <canvas id="my-canvas" width="1000" height="1000"></canvas>
-        <div id="img-data-div">
-          <a href="#" id="img-file" download="image.png"> DOWNLOAD
-            <img src="https://img.icons8.com/ios-glyphs/40/000000/download.png"/>
-         </a>
-      </div>
-      
-    <script src="main.js"></script>
 </body>
+
 </html>
