@@ -12,6 +12,8 @@
 Our team was excited to utilize a graphics API, and Canvas API was perfect for our purposes.
 ## Optimizations
 
+Optimizations are a work in progress! We intend to build out the back end of the project and address optimizations at that time.
+
 ## Lessons Learned
 The amount of information on Canvas API is overwhelming. We thought the bulk of the work would be in JavaScript but our CSS file grew quickly, too! Bringing an API into a project can require extra time with documentation and tutorials. 
 ## Deployment
