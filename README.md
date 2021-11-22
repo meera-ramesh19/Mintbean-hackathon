@@ -1,5 +1,6 @@
 # MintBean Hackathon Challenge: Becoming Bob Ross :paintbrush:
 **Challenge: Create an app that lets people express their creativity in a visual format.**
+
 **Our Project: In the spirit of Bob Ross, we built a [Happy Little Painting App](https://happy-little-painting-app.netlify.app)!**
 
 ***"We don't make mistakes, just happy little accidents."*** -Bob Ross, 1942-1995
@@ -7,6 +8,7 @@
 ![Landing page](landingPage.png)
 ## Tools
 **Tech: HTML, CSS, JavaScript, and Canvas API**
+
 Our team was excited to utilize a graphics API, and Canvas API was perfect for our purposes.
 ## Optimizations
 
