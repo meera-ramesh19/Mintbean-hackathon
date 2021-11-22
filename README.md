@@ -20,15 +20,13 @@ The amount of information on Canvas API is overwhelming. We thought the bulk of 
 We chose to deploy our app to Netlify. Netlify offers continuous deployment via GitHub and the option to create a back end with login, sharing, and other features in the future. 
 ## Developers/Designer
 ### Bridget Brevik, Designer
- <a href="https://twitter.com/theDevBee" target="blank"><img src="https://img.shields.io/twitter/follow/jennifertoops?logo=twitter&style=for-the-badge" alt="jennifertoops" /></a><a href="https://linkedin.com/in/jennifertoops" target="blank"><img src="https://cdn.jsdelivr.net/npm/simple-icons@3.0.1/icons/linkedin.svg" background-color="blue" alt="jennifertoops" height="30" width="40" /></a>
+ <a href="https://twitter.com/theDevBee" target="blank"><img src="https://img.shields.io/twitter/follow/theDevBee?logo=twitter&style=for-the-badge" alt="Bridget Brevik twitter" /></a><a href="https://linkedin.com/in/bridgetb/" target="blank"><img src="https://cdn.jsdelivr.net/npm/simple-icons@3.0.1/icons/linkedin.svg" background-color="blue" alt="Bridget Brevik Linkedin" height="30" width="40" /></a>
 ### Meera Ramesh, Developer
- <a href="https://twitter.com/jennifertoops" target="blank"><img src="https://img.shields.io/twitter/follow/jennifertoops?logo=twitter&style=for-the-badge" alt="jennifertoops" /></a><a href="https://www.linkedin.com/in/meeraramesh/" target="blank"><img src="https://cdn.jsdelivr.net/npm/simple-icons@3.0.1/icons/linkedin.svg" background-color="blue" alt="jennifertoops" height="30" width="40" /></a>
+ <a href="https://twitter.com/Meerarams" target="blank"><img src="https://img.shields.io/twitter/follow/Meerarams?logo=twitter&style=for-the-badge" alt="Meera Ramesh Twitter" /></a><a href="https://www.linkedin.com/in/meeraramesh/" target="blank"><img src="https://cdn.jsdelivr.net/npm/simple-icons@3.0.1/icons/linkedin.svg" background-color="blue" alt="Meera Ramesh Linkedin" height="30" width="40" /></a>
 
 ### Jennifer Toops, Developer
 
- <a href="https://twitter.com/jennifertoops" target="blank"><img src="https://img.shields.io/twitter/follow/jennifertoops?logo=twitter&style=for-the-badge" alt="jennifertoops" /></a><a href="https://linkedin.com/in/jennifertoops" target="blank"><img src="https://cdn.jsdelivr.net/npm/simple-icons@3.0.1/icons/linkedin.svg" background-color="blue" alt="jennifertoops" height="30" width="40" /></a>
-
-
+ <a href="https://twitter.com/jennifertoops" target="blank"><img src="https://img.shields.io/twitter/follow/jennifertoops?logo=twitter&style=for-the-badge" alt="Jennifer Toops twitter"/></a><a href="https://linkedin.com/in/jennifertoops" target="blank"><img src="https://cdn.jsdelivr.net/npm/simple-icons@3.0.1/icons/linkedin.svg" background-color="blue" alt="Jennifer Toops Linkedin" height="30" width="40" /></a>
 
 
 ## App in Action!
