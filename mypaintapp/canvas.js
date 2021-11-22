@@ -116,14 +116,16 @@ function stop() {
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+//  jt-color-change-functionality
+
+>>>>>>> bc72fdd505257085b52bb44b6e72ffb738a3ec8e
 //This collects the RGB values in the CSS file so you can assign them to the strokeStyle()
 const changeColors = (event) => {
   const newColor = event.target.id;
-  console.log(newColor)
   let assignedNewColorRGB = window.getComputedStyle(document.querySelector(`#${newColor}`), null).getPropertyValue('background-color');
-  console.log(assignedNewColorRGB)
-  // document.querySelector('h3').innerHTML = assignedNewColorRGB;
   return ctx.strokeStyle = assignedNewColorRGB;
 }
 document.querySelector('.color-panel').addEventListener('click', changeColors)
