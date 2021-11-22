@@ -115,6 +115,21 @@ function stop() {
   canvas.removeEventListener("touchmove", draw, false);
 }
 
+<<<<<<< HEAD
+=======
+//This collects the RGB values in the CSS file so you can assign them to the strokeStyle()
+const changeColors = (event) => {
+  const newColor = event.target.id;
+  console.log(newColor)
+  let assignedNewColorRGB = window.getComputedStyle(document.querySelector(`#${newColor}`), null).getPropertyValue('background-color');
+  console.log(assignedNewColorRGB)
+  // document.querySelector('h3').innerHTML = assignedNewColorRGB;
+  return ctx.strokeStyle = assignedNewColorRGB;
+}
+document.querySelector('.color-panel').addEventListener('click', changeColors)
+
+
+>>>>>>> 7bcca5846ad8043000757884bd6909e6dbfc2bdb
 function draw(event) {
   if (!drawing) return;
   if (drawing && mymouseDown) {
