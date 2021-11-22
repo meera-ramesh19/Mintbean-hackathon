@@ -17,6 +17,7 @@
 }
 .toolbar{
     background:darkseagreen;
+    cursor:pointer;
 }
 h1{
     text-align: center;
@@ -28,10 +29,20 @@ h1{
     align-items: center;
 }
 
+
+/* canvas {
+	cursor: url(crosshair.cur), default;
+	/* Change the hotspot - cursor: url(crosshair.cur) 0 0, default; *
+	background:#F4F4F4;
+	display: block;
+} */
+/* input[type="file"]{
+    display:none;
+} */
 button{
     background:none; 
     border:none;
-
+    cursor:pointer;
    }
    .toolbar{
     padding:0.5rem 0;
@@ -45,8 +56,10 @@ button{
     display:flex;
     /* width:100%; */
     /* border:2px solid black; */
+    
 }
 .right-panel{
+    cursor:pointer;
     display:block;
     margin:2rem auto;
     width:90%;
@@ -89,7 +102,7 @@ input{
     flex-wrap: wrap; 
     justify-content: center;
     align-content: center; 
-    padding: 0.5rem 1rem;
+    padding: 1rem 1rem;
 }
 
 .palette{
@@ -142,7 +155,7 @@ input{
        width:80vw;
         
         overflow:hidden; */
-        height:85vh;
+        height:90vh;
         margin:4rem auto;
     
     }
@@ -161,16 +174,19 @@ input{
         /* width:100%; */
        text-align: center;
     }
-   
+    /* .upload{
+        margin-top:-1px;
+        margin-left:-40px;
+    } */
     .left-panel{
         width:15%;
-        margin-top:1rem;
+        /* margin-top:1rem; */
         /* display:block;*/
         border:2px solid black; 
     }
     .right-panel{
         width:80%;
-        height:65vh;
+        height:75vh;
         margin-top:1rem;
         /* display:block;
         margin:0 auto;
@@ -186,8 +202,8 @@ input{
         flex-wrap: wrap; 
         justify-content: center;
         align-content: center;  
-        margin:0 0 2rem 1rem;
-        padding:1rem 0;
+        margin:0 0 1rem 1rem;
+        padding:2rem 0;
         /* border:2px solid black; */
         box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     }
@@ -199,7 +215,7 @@ input{
     #brushWidth{
         text-align:center;
         width:200px;
-        height:110px;
+        height:90px;
         padding:0.5rem 0rem;
         display:block;
         /* border:2px solid black; */
@@ -213,14 +229,14 @@ input{
         width:150px;
     }
     input{ 
-        margin-top: 0.5rem;
+        /* margin-top: 0.5rem; */
     } 
     .input-form{
         display:block;
         justify-content: center;
         align-items: center;
-        padding:0.5rem 0;
-    }
+        /* /* padding:0.5rem 0; */
+    } 
    
         
   
