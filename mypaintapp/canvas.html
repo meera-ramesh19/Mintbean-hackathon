@@ -2,6 +2,7 @@
 <html>
   <head>
     <title> Canvas Paint App</title>
+    <link rel="icon" href="../favicon.png">
     <link rel="stylesheet" href="canvas.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto:100" rel="stylesheet"> 
     <script src="https://kit.fontawesome.com/46b13243e4.js" crossorigin="anonymous"></script>
@@ -58,9 +59,9 @@
         </button>
     <!-- </li>
         <li> -->
-        <button class="btn" type="button" id="eraser" data-divbtn="eraser" title="Eraser">
+        <!-- <button class="btn" type="button" id="eraser" data-divbtn="eraser" title="Eraser">
             <img src="https://img.icons8.com/ios-glyphs/20/000000/eraser.png"/>
-        </button>
+        </button> -->
          <!-- </li>
     <li> -->
         <button class="btn" type="button" id="clear" data-divbtn="clear" title="Clear">
@@ -115,9 +116,10 @@
     <div class="palette black" id="black" onclick="changeColors()"></div>
     <div class="palette black1" id="black1" onclick="changeColors()"></div>
     <div class="palette black2" id="black2" onclick="changeColors()"></div>
-    <!-- <div class="palette white" id="erase" onclick="changeColors(this)">
-        <i class="fas fa-eraser "></i> 
-    </div> -->
+<!-- // jt-color-change-functionality -->
+    <div class="palette white" id="eraser" onclick="changeColors()">
+        <i class="fas fa-eraser" id="board-eraser"></i> 
+    </div> 
 </div> 
    <!-- </div> -->
     <div id="brushWidth">

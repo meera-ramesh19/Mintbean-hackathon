@@ -112,6 +112,7 @@ function stop() {
      canvas.addEventListener("touchmove", draw, false);
 }
 
+//  jt-color-change-functionality
 
 //This collects the RGB values in the CSS file so you can assign them to the strokeStyle()
 const changeColors = (event) => {
@@ -120,6 +121,7 @@ const changeColors = (event) => {
   return ctx.strokeStyle = assignedNewColorRGB;
 }
 document.querySelector('.color-panel').addEventListener('click', changeColors)
+
 
 function draw(event) {
     if (!drawing) return;
