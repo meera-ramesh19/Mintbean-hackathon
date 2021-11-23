@@ -141,11 +141,10 @@ input{
 .purple1 { background: #D178B1; }
 .purple2 { background: #E3ABCE; }
 .white {background: white;}
-#board-eraser {background: whitesmoke;}
 
-#points{
+/* #points{
     cursor:crosshair;
-}
+} */
 
 @media(min-width: 1000px){
 
@@ -209,10 +208,7 @@ input{
         box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     }
         
-     /* #erase{
-           text-align: center;
-           
-       } */
+    
     #brushWidth{
         text-align:center;
         width:200px;

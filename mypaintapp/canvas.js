@@ -23,7 +23,7 @@ let textCoordinates = { x: 0, y: 0 };
 let pointCoordinates = { x: 0, y: 0 };
 let crayonCoordinates = { x: 0, y: 0 };
 let rectCoordinates = { x: 0, y: 0 };
-let tool = "freedraw";
+let tool = "freehand";
 let strokeStyle = "black";
 let crpts = [];
 
@@ -56,8 +56,9 @@ document.querySelector("#fill").addEventListener("click", fillColor);
 document.querySelector("#points").addEventListener("click", drawPoints);
 document.querySelector("#pencil").addEventListener("click", pencil);
 document.querySelector("#crayon").addEventListener("click", crayon);
+document.querySelector("#ellipse").addEventListener("click", ellipse);
 document.querySelector("#rectangle").addEventListener("click", rectangle);
-document.querySelector("#circle").addEventListener("click", circle);
+document.querySelector("#circle").addEventListener("click", circleTool);
 document.querySelector("#eraser").addEventListener("click", eraseImage);
 document.querySelector("#clear").addEventListener("click", clearImage);
 document.querySelector("#reload").addEventListener("click", reload);
@@ -78,169 +79,144 @@ function init() {
   }
 }
 
-canvas.addEventListener("touchstart", start, false);
-canvas.addEventListener("mousedown", start, false);
-canvas.addEventListener("touchmove", draw, false);
-canvas.addEventListener("mousemove", draw, false);
-canvas.addEventListener("mouseup", stop, false);
-canvas.addEventListener("touchend", stop, false);
-canvas.addEventListener("mouseout", stop, false);
-window.addEventListener("resize", resize);
 
-resize();
 
-function resize() {
-  ctx.canvas.width = window.innerWidth - 80;
-  ctx.canvas.height = window.innerHeight - 80;
-}
 
-function reposition(event) {
-  coord.x = event.clientX - canvas.offsetLeft;
-  coord.y = event.clientY - canvas.offsetTop;
-}
+///********/
+//FREEHANDTOOL//
+//************/
 
-function start(event) {
-  drawing = true;
-  mymouseDown = true;
+
+
+  canvas.addEventListener("mousedown", start, false);
+  
   canvas.addEventListener("mousemove", draw, false);
+  canvas.addEventListener("mouseup", stop, false);
+  canvas.addEventListener("touchstart", start, false);
+  canvas.addEventListener("touchend", stop, false);
   canvas.addEventListener("touchmove", draw, false);
-  reposition(event);
-}
-
-function stop() {
-  drawing = false;
- 
-  canvas.removeEventListener("mousedown", draw, false);
-  canvas.removeEventListener("mousemove", draw, false);
-  canvas.removeEventListener("touchmove", draw, false);
-}
-
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-=======
-//  jt-color-change-functionality
-
->>>>>>> bc72fdd505257085b52bb44b6e72ffb738a3ec8e
-//This collects the RGB values in the CSS file so you can assign them to the strokeStyle()
-const changeColors = (event) => {
-  const newColor = event.target.id;
-  let assignedNewColorRGB = window.getComputedStyle(document.querySelector(`#${newColor}`), null).getPropertyValue('background-color');
-  return ctx.strokeStyle = assignedNewColorRGB;
-}
-document.querySelector('.color-panel').addEventListener('click', changeColors)
-
-
->>>>>>> 7bcca5846ad8043000757884bd6909e6dbfc2bdb
-function draw(event) {
-  if (!drawing) return;
-  if (drawing && mymouseDown) {
-    //begins or resets a path
-    ctx.beginPath();
-    //  if (mode!="eraser"){
-    //specifies the current line width
-    ctx.lineWidth = 5;
-    //style of endcaps for a line
-    ctx.lineCap = "round";
-    ctx.lineJoin = "round";
-    if (erasing == "true") {
-      // ctx.clearRect(0, 0, canvas.width, canvas.height);
-      ctx.globalCompositeOperation = "destination-out";
-    } else {
-      ctx.globalCompositeOperation = "source-over";
-    }
-    //moves to specified point without creating a line
-    ctx.moveTo(coord.x, coord.y);
-    reposition(event);
-    //adds anew point and creates a line from that point to the last specified point
-    ctx.lineTo(coord.x, coord.y);
-    //draws the path on to the canvas
-    ctx.stroke();
-    ctx.closePath();
-    // ctx.font = "16px Arial";
-    // // ctx.lineWidth = coordWidth;
-    // let gradient = ctx.createLinearGradient(0, 0, c.width, 0);
-    // gradient.addColorStop("0", "magenta");
-    // gradient.addColorStop("0.5", "blue");
-    // gradient.addColorStop("1.0", "red");
-    // // Fill with gradient
-    // ctx.fillStyle = gradient;
-    // ctx.fillText("X: "+coord.x+", Y: "+coord.y, 10, 20,500);
+  canvas.addEventListener("mouseout", stop, false);
+  window.addEventListener("resize", resize);
+  
+  resize();
+  
+  function resize() {
+    ctx.canvas.width = window.innerWidth - 80;
+    ctx.canvas.height = window.innerHeight - 80;
   }
-
-  lastX = coord.x;
-  lastY = coord.y;
-
-  event.preventDefault();
-}
-
+  
+  function reposition(event) {
+    coord.x = event.clientX - canvas.offsetLeft;
+    coord.y = event.clientY - canvas.offsetTop;
+  }
+  
+  function start(event) {
+    drawing = true;
+    mymouseDown = true;
+    canvas.addEventListener("mousemove", draw, false);
+    canvas.addEventListener("touchmove", draw, false);
+    reposition(event);
+  }
+  
+  function stop() {
+    drawing = false;
+    
+    canvas.removeEventListener("mousedown", draw, false);
+    canvas.removeEventListener("mousemove", draw, false);
+    canvas.removeEventListener("touchmove", draw, false);
+  }
+  
+  function draw(event) {
+    if (!drawing) return;
+    if (drawing && mymouseDown) {
+      //begins or resets a path
+      ctx.beginPath();
+      //  if (mode!="eraser"){
+        //specifies the current line width
+        ctx.lineWidth = 5;
+        //style of endcaps for a line
+        ctx.lineCap = "round";
+        ctx.lineJoin = "round";
+        if (erasing == "true") {
+          // ctx.clearRect(0, 0, canvas.width, canvas.height);
+          ctx.globalCompositeOperation = "destination-out";
+        } else {
+          ctx.globalCompositeOperation = "source-over";
+        }
+        //moves to specified point without creating a line
+        ctx.moveTo(coord.x, coord.y);
+        reposition(event);
+        //adds anew point and creates a line from that point to the last specified point
+        ctx.lineTo(coord.x, coord.y);
+        //draws the path on to the canvas
+        ctx.stroke();
+        ctx.closePath();
+        // ctx.font = "16px Arial";
+        // // ctx.lineWidth = coordWidth;
+        // let gradient = ctx.createLinearGradient(0, 0, c.width, 0);
+        // gradient.addColorStop("0", "magenta");
+        // gradient.addColorStop("0.5", "blue");
+        // gradient.addColorStop("1.0", "red");
+        // // Fill with gradient
+        // ctx.fillStyle = gradient;
+        // ctx.fillText("X: "+coord.x+", Y: "+coord.y, 10, 20,500);
+      }
+      
+      lastX = coord.x;
+      lastY = coord.y;
+      
+      event.preventDefault();
+    }
+  
+  
 /************** */
 // PENCIL TOOL
 /**************** */
 function pencil(event) {
-  console.log("in");
   tool = "pencil";
-  let start_drawPencil;
-  canvas.removeEventListener("mousemove", draw, false);
-  canvas.removeEventListener("mousedown", draw, false);
-  let mouse={x:0,y:0};
-  mouse.x = event.ClientX-event.offsetX;
-  mouse.y = event.ClientY-event.offsetY;
-  ctx.lineWidth=linebarWidth();
-  canvas.addEventListener("touchstart", startPencil, false);
-  canvas.addEventListener("mousedown", startPencil, false);
-  canvas.addEventListener("touchmove", drawPencil, false);
-  canvas.addEventListener("mousemove", drawPencil, false);
-  canvas.addEventListener("mouseup", stopPencil, false);
-  canvas.addEventListener("touchend", stopPencil, false);
-  canvas.addEventListener("mouseout", stopPencil, false);
+       canvas.removeEventListener("mousemove", draw, false);
+       canvas.removeEventListener("mousedown", draw, false);
+	let mouse = { x: 0, y: 0};
 
-  function startPencil() {
-    start_drawPencil = true;
-    mymouseDown = true;
-    canvas.addEventListener("mousemove", drawPencil, false);
-    canvas.addEventListener("touchmove", drawPencil, false);
-    // reposition(event);
-  }
+	//Paint includes line width, line cap, and color
+	drawPencil = function() {
+		ctx.lineTo(mouse.x, mouse.y);
+		ctx.lineWidth = linebarWidth();
+		ctx.lineJoin = 'round';
+		ctx.strokeStyle = colors;
+		ctx.stroke();
+	};
 
-  function drawPencil() {
-    if (!start_drawPencil) return;
-    if (start_drawPencil && mymouseDown) {
-      //console.log(mouse.x + " "+mouse.y);
-      // Saving all the points in an array
-      ppts.push({ x: mouse.x, y: mouse.y });
+	//Find mouse coordinates relative to canvas
+	pencilMousemove = function(e){
+		mouse.x = e.pageX - this.offsetLeft;
+		mouse.y = e.pageY - this.offsetTop;
+	};
 
-      if (ppts.length < 3) {
-        var b = ppts[0];
-        ctx.beginPath();
-        //ctx.moveTo(b.x, b.y);
-        //ctx.lineTo(b.x+50, b.y+50);
-        ctx.arc(b.x, b.y, ctx.lineWidth / 2, 0, Math.PI * 2, !0);
-        ctx.fill();
-        ctx.closePath();
-        return;
-      }
+	//User clicks down on canvas to trigger draw
+	pencilMousedown = function(){
+		ctx.beginPath();
+		ctx.moveTo(mouse.x, mouse.y);
+		canvas.addEventListener('mousemove', drawPencil, false);
+	};
 
-      //  canvas is always cleared up before drawing.
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
+	//When mouse lifts up, line stops drawing
+	pencilMouseup = function(){
+		canvas.removeEventListener('mousemove', drawPencil, false);
+	};
 
-      ctx.beginPath();
-      ctx.moveTo(ppts[0].x, ppts[0].y);
+	//When mouse leaves canvas, line stops drawing
+	pencilMouseout = function() {
+		canvas.removeEventListener('mousemove', drawPencil, false);
+	};
 
-      for (var i = 0; i < ppts.length; i++) ctx.lineTo(ppts[i].x, ppts[i].y);
-
-      ctx.stroke();
-      ctx.closePath();
-    }
-  }
-
-  function stopPencil() {
-    start_drawPencil = false;
-   
-    canvas.removeEventListener("mousedown", drawPencil, false);
-    canvas.removeEventListener("mousemove", drawPencil, false);
-    canvas.removeEventListener("touchmove", drawPencil, false);
-  }
+	//Event listeners that will trigger the paint functions when
+	//mousedown, mousemove, mouseup, mouseout
+	canvas.addEventListener('mousedown', pencilMousedown, false);
+	canvas.addEventListener('mousemove', pencilMousemove, false);
+	canvas.addEventListener('mouseup', pencilMouseup, false);
+	canvas.addEventListener('mouseout', pencilMouseout, false);
+  
 }
 
 /************** */
@@ -252,8 +228,8 @@ function crayon(event) {
   canvas.removeEventListener("mousemove", draw, false);
   canvas.removeEventListener("mousedown", draw, false);
 
-  ctx.globalAlpha = 0.4;
-  lineWidth=15;
+  ctx.globalAlpha = 0.6;
+  lineWidth=6;
   let canvasPos = canvas.getBoundingClientRect();
 
   let dragging = false;
@@ -263,37 +239,36 @@ function crayon(event) {
 
   let lastPos = null;
 
-  function startCrayon(e) {
-      let pos = getCursorPosition(e);
-                  
+  function startCrayon(event) {
+      let pos = getCursorPosition(event);
       dragging = true;
-      
       lastPos = pos;
+      ctx.beginPath();
+      ctx.moveTo(lastPos.x, lastPos.y);
   }
               
-  function stopCrayon(e) {
+  function stopCrayon(event) {
       dragging = false;
+      ctx.globalAlpha = 1.0;
       canvas.addEventListener("mousedown",startCrayon,false);
       canvas.addEventListener("mousedown",drawCrayon,false);
       
   }
   
-  function drawCrayon(e) {
+  function drawCrayon(event) {
       var pos, i;
-  
       if (!dragging) {
           return;
       }
       
       pos = getCursorPosition(e);
-  
       if (lastPos) {
           ctx.strokeStyle = 'black';
           ctx.lineCap = 'round';
           ctx.lineJoin = 'round';
-          ctx.lineWidth = 15;
-          ctx.beginPath();
-          ctx.moveTo(lastPos.x, lastPos.y);
+          ctx.lineWidth = linebarWidth();
+          // ctx.beginPath();
+          // ctx.moveTo(lastPos.x, lastPos.y);
           ctx.lineTo(pos.x, pos.y);
           ctx.stroke();
       }
@@ -301,10 +276,10 @@ function crayon(event) {
       lastPos = pos;
   }
   
-  function getCursorPosition(e) {
+  function getCursorPosition(event) {
       return {
-          x: e.clientX - canvasPos.left,
-          y: e.clientY - canvasPos.top
+          x: event.clientX - canvasPos.left,
+          y: event.clientY - canvasPos.top
       };
   }
   
@@ -315,11 +290,13 @@ function crayon(event) {
 /********************** */
 
 function drawPoints(event) {
+  ctx.globalAlpha = 1.0;
   tool = "points";
   let isstart = false;
   canvas.removeEventListener("mousemove", draw, false);
   canvas.removeEventListener("mousedown", draw, false);
-  let pointSize = linebarWidth();
+  // let pointSize = linebarWidth();
+  let pointSize=6;
   console.log("in");
   canvas.addEventListener("mousedown", drawPointCoord, false);
   canvas.addEventListener("mousemove", drawCoordinates,false)
@@ -338,7 +315,7 @@ function drawPoints(event) {
   }
 
   function drawCoordinates(x, y) {
-    ctx.fillStyle = "#ff2626"; // Red color
+    ctx.fillStyle = "#00000"; // Red color
     ctx.beginPath();
     ctx.arc(x, y, pointSize / 2, 0, Math.PI * 2, !0);
     ctx.fill();
@@ -354,7 +331,7 @@ function drawPoints(event) {
   //  ctx.drawImage(tmp_canvas, 0, 0);
 
   function stop() {
-    canvas.removeEventListener("mousedown", drawCoordinates, false);
+    canvas.removeEventListener("mousedown", drawPointCoord, false);
     canvas.removeEventListener("mousemove", drawCoordinates, false);
     canvas.removeEventListener("touchmove", drawCoordinates, false);
   }
@@ -370,78 +347,101 @@ function line(event) {
   //offsetX -same as clientx minus the difference of the element/pixels from the start of the element edge/border of the canvas
   canvas.removeEventListener("mousemove", draw, false);
   canvas.removeEventListener("mousedown", draw, false);
-
+  ctx.globalAlpha = 1.0;
   tool = "line";
-  let startPosition = { x: 0, y: 0 };
-  lineCoordinates.x = event.offsetX;
-  lineCoordinates.y = event.offsetY;
-  console.log(lineCoordinates);
-  let isDrawStart = false;
 
-  // const getClientOffset = (event) => {
-  //     const {pageX, pageY} = event.touches ? event.touches[0] : event;
-  //     const x = pageX - canvas.offsetLeft;
-  //     const y = pageY - canvas.offsetTop;
+  
+canvas.addEventListener("mousemove", drawLine, false);
+canvas.addEventListener("mouseup", endLine, false);
+canvas.addEventListener("mouseout", endLine, false);
+canvas.addEventListener("mousedown", startLine, false);
+canvas.addEventListener("touchstart", startLine, false);
+canvas.addEventListener("touchmove", drawLine, false);
+canvas.addEventListener("touchend", endLine, false);
 
-  //     return {
-  //        x,
-  //        y
-  //     }
-  // }
+let isDown = false;
+let beginPoint = null;
 
-  const drawLines = () => {
-    //  ctx.clearRect(0, 0, canvas.width,canvas.height);
-    //  ctx.beginPath();
-    //  ctx.lineWidth = linebarWidth();
-    //  ctx.lineCap = "round";
-    //  ctx.lineJoin ="round";
-    //  ctx.moveTo(startPosition.x, startPosition.y);
-    //  ctx.lineTo(lineCoordinates.x, lineCoordinates.y);
-    //  ctx.stroke();
-    //  ctx.closePath();
-    lineCoordinates.x = event.offsetX;
-    lineCoordinates.y = event.offsetY;
-    // canvas is always cleared up before drawing.
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
+// Setting Line Colors
+ctx.strokeStyle = 'red';
+ctx.lineWidth = 1;
+ctx.lineJoin = 'round';
+ctx.lineCap = 'round';
 
-    ctx.beginPath();
-    ctx.moveTo(startPosition.x, startPosition.y);
-    ctx.lineTo(lineCoordinates.x, lineCoordinates.y);
-    ctx.stroke();
-    ctx.closePath();
-  };
+// let startPosition = {x: 0, y: 0};
+// let lineCoordinates = {x: 0, y: 0};
+// let isDrawStart = false;
 
-  const startDraw = (event) => {
-    // startPosition = getClientOffset(event);
-    isDrawStart = true;
-    canvas.addEventListener("mousemove", lineDraw, false);
-    canvas.addEventListener("touchmove", lineDraw, false);
-  };
+// const getClientOffset = (event) => {
+//     const {pageX, pageY} = event.touches ? event.touches[0] : event;
+//     const x = pageX - canvas.offsetLeft;
+//     const y = pageY - canvas.offsetTop;
 
-  const lineDraw = (event) => {
-    if (!isDrawStart) return;
-    // lineCoordinates = getClientOffset(event);
-    drawLines();
-  };
+//     return {
+//        x,
+//        y
+//     } 
+// }
 
-  const stopDraw = (event) => {
-    isDrawStart = false;
-    canvas.removeEventListener("mousedown", lineDraw, false);
-    canvas.removeEventListener("mousemove", lineDraw, false);
-    canvas.removeEventListener("touchmove", lineDraw, false);
-  };
+function startLine(event){
+  isDown = true;
+            beginPoint = getPos(event);
+  // startPosition = getClientOffset(event);
+  // isDrawStart = true;
+}
 
-  const clearCanvas = () => {
-    ctx.clearRect(0, 0, canvasEle.width, canvasEle.height);
-  };
+function drawLine(event) {
+  if (!isDown) return;
+            const endPoint = getPos(event);
+            drawJoinLine(beginPoint, endPoint);
+            beginPoint = endPoint;
+    // if(!isDrawStart) return;
+  
+  //   lineCoordinates = getClientOffset(event);
+  //   // clearCanvas();
+  //   ctx.beginPath();
+  //   ctx.lineWidth=linebarWidth();
+  //  ctx.moveTo(startPosition.x, startPosition.y);
+  //  ctx.lineTo(lineCoordinates.x, lineCoordinates.y);
+  //  ctx.stroke();
+  }
 
-  canvas.addEventListener("mousedown", startDraw, false);
-  canvas.addEventListener("mousemove", lineDraw, false);
-  canvas.addEventListener("mouseup", stopDraw, false);
+//   const clearCanvas = () => {
+//     context.clearRect(0, 0, canvasEle.width, canvasEle.height);
+// }
 
-  canvas.addEventListener("touchstart", startDraw, false);
-  canvas.addEventListener("touchmove", lineDraw, false);
-  canvas.addEventListener("touchend", stopDraw, false);
+
+function getPos(event) {
+  return {
+      x: event.clientX,
+      y: event.clientY
+  }
+}
+function drawJoinLine(beginPoint, endPoint) {
+  ctx.beginPath();
+  ctx.moveTo(beginPoint.x, beginPoint.y);
+  ctx.lineTo(endPoint.x, endPoint.y);
+  ctx.stroke();
+  ctx.closePath();
+}
+
+ function endLine(event){
+  if (!isDown) return;
+            
+  const endPoint = getPos(event);
+  drawJoinLine(beginPoint, endPoint);
+
+  beginPoint = null;
+  isDown = false;
+  // isDrawStart = false;
+    canvas.removeEventListener("mousedown", startLine, false);
+    canvas.removeEventListener("mousemove", drawLine, false);
+    canvas.removeEventListener("touchmove", drawLine, false);
+  }
+ 
+
+  
+
 }
 
 //**************** */
@@ -450,168 +450,235 @@ function line(event) {
 /*****************/
 
 function rectangle(event) {
-  canvas.removeEventListener("mousemove", draw, false);
-  canvas.removeEventListener("mousedown", draw, false);
+      console.log("in");
+      canvas.removeEventListener("mousemove", draw, false);
+      canvas.removeEventListener("mousedown", draw, false);
+      ctx.globalAlpha = 1.0;
 
-  ctx.globalAlpha = 1.0;
+      var canvasx = canvas.offsetLeft;
+      var canvasy = canvas.offsetTop;
+      var last_mousex = last_mousey = 0;
+      var mousex = mousey = 0;
+      var mousedown = false;
+      var width;
+      var height;
+      var drawItems = [];
+     
+      canvas.addEventListener('mousedown', setRect,false);
+      canvas.addEventListener('mouseup', endRect,false);
+      canvas.addEventListener('mouseout', endRect,false);
+      canvas.addEventListener('mousemove', drawRect,false);
+      
+       //Mousedown
+       function setRect(event) {
+          last_mousex = parseInt(event.clientX-canvasx);
+          last_mousey = parseInt(event.clientY-canvasy);
+          mousedown = true;
+      }
+      //Mouseup
+       function endRect(event) {
+          mousedown = false;
+          drawItems.push({
+             x0: last_mousex,
+            x1: width,
+            y0: last_mousey,
+            y1: height
+          });
+          canvas.removeEventListener('mousedown', setRect,false);
+          canvas.removeEventListener('mouseup', endRect,false);
+          canvas.removeEventListener('mouseout', endRect,false);
+          canvas.removeEventListener('mousemove', drawRect,false);
+          
+      }
+      //Mousemove
+      
+       function drawRect(event) {
+          mousex = parseInt(event.clientX-canvasx);
+         mousey = parseInt(event.clientY-canvasy);
+          if(mousedown) {
+                 ctx.clearRect(0,0,canvas.width,canvas.height); //clear canvas
+                 ctx.strokeStyle = 'black';
+                 ctx.lineWidth = linebarWidth();
+                for(var i=0; i<drawItems.length; i++) {
+                 ctx.beginPath();
+                 ctx.rect(drawItems[i].x0, drawItems[i].y0, drawItems[i].x1, drawItems[i].y1);
+                 ctx.stroke();
+              }
+              width = mousex-last_mousex;
+              height = mousey-last_mousey;
+              ctx.beginPath();
+              ctx.rect(last_mousex,last_mousey,width,height);
+              ctx.stroke();
+          }
+          //Output
+         // $('#output').html('current: '+mousex+', '+mousey+'<br/>last: '+last_mousex+', '+last_mousey+'<br/>mousedown: '+mousedown);
+      }
+  
+  // let rectPosition = false;
+  // let rectstart ={ x:0, y:0 };
+  // canvas.addEventListener("touchstart", startRect, false);
+  // canvas.addEventListener("mousedown", startRect, false);
+  // canvas.addEventListener("touchmove", drawRect, false);
+  // canvas.addEventListener("mousemove", drawRect, false);
+  // canvas.addEventListener("mouseup", stopRect, false);
+  // canvas.addEventListener("touchend", stopRect, false);
+  // canvas.addEventListener("mouseout", stopRect, false);
 
-  mouse.x = event.offsetX;
-  mouse.y = event.offsetY;
-  let rectStart = false;
-  canvas.addEventListener("touchstart", startRect, false);
-  canvas.addEventListener("mousedown", startRect, false);
-  canvas.addEventListener("touchmove", drawRect, false);
-  canvas.addEventListener("mousemove", drawRect, false);
-  canvas.addEventListener("mouseup", stopRect, false);
-  canvas.addEventListener("touchend", stopRect, false);
-  canvas.addEventListener("mouseout", stopRect, false);
+  // function startRect(event) {
+   
+    // rectPosition= true;
+    // mymouseDown = true;
+    //  rectstart.x=event.offsetX;
+    //  rectstart.y=event.offsetY;
+    // canvas.addEventListener("mousemove", drawRect, false);
+    // canvas.addEventListener("touchmove", drawRect, false);
+    //  reposition(event);
+  // }
 
-  function startRect(event) {
-    rectStart = true;
-    mymouseDown = true;
-    rect.startX = e.pageX - this.offsetLeft;
-    rect.startY = e.pageY - this.offsetTop;
-    canvas.addEventListener("mousemove", drawRect, false);
-    canvas.addEventListener("touchmove", drawRect, false);
-    //  // reposition(event);
-  }
+  // function drawRect() {
+     
+    // if (!rectPosition) return;
+    // if (rectPosition) {
+    //   rectCoordinates.x = event.offsetX;
+    //   rectCoordinates.y = event.offsetY;
+    //   //canvas is always cleared up before drawing.
+    //   ctx.clearRect(0, 0, canvas.width, canvas.height);
+    //   ctx.beginPath();
+    //   ctx.moveTo(rectstart.x, rectstart.y);
 
-  function drawRect() {
-    if (!rectStart) return;
-    if (rectStart) {
-      rectCoordinates.x = event.offsetX;
-      rectCoordinates.y = event.offsetY;
-      //canvas is always cleared up before drawing.
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      ctx.beginPath();
-      ctx.moveTo(rectCoordinates.x, rectCoordinates.y);
+    //    let x = Math.min(rectCoordinates.x, rectstart.x);
+    //    let y = Math.min(rectCoordinates.y, rectstart.y);
+    //    let width = Math.abs(rectCoordinates.x - rectstart.x);
+    //    let  height = Math.abs(rectCoordinates.y - rectstart.y);
+    //    ctx.strokeRect(x, y, width, height);
+    //    ctx.closePath();
+    // }
+  //  }
 
-      //  let x = Math.min(mouse.x, rectCoordinates.x);
-      //  let y = Math.min(mouse.y, rectCoordinates.y);
-      //  let width = Math.abs(mouse.x - rectCoordinates.x);
-      //  let  height = Math.abs(mouse.y - rectCoordinates.y);
-      ctx.strokeRect(x, y, width, height);
-      ctx.closePath();
-    }
-  }
 
-  function stopRect() {
-    rectStart = false;
-    canvas.removeEventListener("mousedown", drawRect, false);
-    canvas.removeEventListener("mousemove", drawRect, false);
-    canvas.removeEventListener("touchmove", drawRect, false);
-  }
-
-  const clearCanvas = () => {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-  };
-
-  canvas.addEventListener("mousedown", drawRect, false);
-  canvas.addEventListener("mousemove", drawRect, false);
-  canvas.addEventListener("mouseup", stopRect, false);
-
-  canvas.addEventListener("touchstart", drawRect, false);
-  canvas.addEventListener("touchmove", drawRect, false);
-  canvas.addEventListener("touchend", stopRect, false);
 }
 
 //**************** */
 //CIRCLE TOOL
 //*************** */
 
-function circle(event) {
+function circleTool(event) {
   canvas.removeEventListener("mousemove", draw, false);
-  canvas.removeEventListener("mousedown", draw, false);
-
+  canvas.removeEventListener("mousedown", start, false);
   ctx.globalAlpha = 1.0;
-  let circleCoordinates = { x: 0, y: 0 };
+  
+  var circles = [];
+  var markerColor = "#f00";
+  var offsetX =canvas.offsetLeft;
+   var offsetY = canvas.offsetTop;
+  var startX;
+  var startY;
+  var isMouseDown = false;
+  var circle, radius;
 
-  let cirleStart = false;
+ canvas.addEventListener('mousedown', drawCircleMouseDown, false);
+ canvas.addEventListener('mouseup', drawCircleMouseUp, false);
+ canvas.addEventListener('mousemove', drawCircleMouseMove, false);
 
-  canvas.addEventListener("touchstart", startCircle, false);
-  canvas.addEventListener("mousedown", drawCircle, false);
-  canvas.addEventListener("touchmove", drawCircle, false);
-  canvas.addEventListener("mousemove", drawCircle, false);
-  canvas.addEventListener("mouseup", stopCircle, false);
-  canvas.addEventListener("touchend", stopCircle, false);
-  canvas.addEventListener("mouseout", stopCircle, false);
-
-  function startCircle(event) {
-    circleStart = true;
-    mymouseDown = true;
-    mouse.x = event.offsetX;
-    mouse.y = event.offsetY;
-    canvas.addEventListener("mousemove", drawCircle, false);
-    canvas.addEventListener("touchmove", drawCircle, false);
-    //  // reposition(event);
-  }
-
-  function drawCircle() {
-    if (!circleStart) return;
-    if (circleStart) {
-      // Tmp canvas is always cleared up before drawing.
-      ctx.clearCircle(0, 0, canvas.width, canvas.height);
-
-      var x = (mouse.x + circleCoordinates.x) / 2;
-      var y = (mouse.y + circleCoordinates.y) / 2;
-
-      //var radius = Math.max(Math.abs(mouse.x - start_mouse.x), Math.abs(mouse.y - start_mouse.y)) / 2;
-      var a = mouse.x - circleCoordinates.x;
-      var b = mouse.y - circleCoordinates.y;
-      var r = Math.sqrt(a * a + b * b);
-
-      ctx.beginPath();
-      //tmp_ctx.arc(x, y, radius, 0, Math.PI*2, false);
-      ctx.arc(circleCoordinates.x, circleCoordinates.y, r, 0, 2 * Math.PI);
-      // tmp_ctx.arc(x, y, 5, 0, Math.PI*2, false);
-      ctx.stroke();
-      ctx.closePath();
+ function Circle(startX, startY) {
+     this.startX = startX;
+     this.startY = startY;
+     this.radius;
+     this.draw = function() {
+     ctx.beginPath();
+     ctx.arc(this.startX, this.startY, this.radius, 0, 2 * Math.PI);
+     ctx.strokeStyle = markerColor;
+     ctx.stroke();
     }
-  }
+ }
 
-  function stopCircle() {
-    circleStart = false;
-    canvas.removeEventListener("mousedown", drawCircle, false);
-    canvas.removeEventListener("mousemove", drawCircle, false);
-    canvas.removeEventListener("touchmove", drawCircle, false);
-  }
+ function drawCircleMouseDown(e) {
+     startX = parseInt(e.clientX - offsetX);
+     startY = parseInt(e.clientY - offsetY);
+     isMouseDown = true;
+     circle = new Circle(startX, startY);
+     circles.push(circle);
+   }
 
-  const clearCanvas = () => {
-    ctx.clear(0, 0, canvas.width, canvas.height);
-  };
+ function drawCircleMouseUp() {
+   isMouseDown = false;
+   circle = null;
+   canvas.removeEventListener('mousedown', drawCircleMouseDown, false);
+   canvas.removeEventListener('mouseup', drawCircleMouseUp, false);
+   canvas.removeEventListener('mousemove', drawCircleMouseMove, false);
+ }
 
-  canvas.addEventListener("mousedown", drawCircle, false);
-  canvas.addEventListener("mousemove", drawCircle, false);
-  canvas.addEventListener("mouseup", stopCircle, false);
+ function drawCircleMouseMove(e) {
+     if (!isMouseDown) {
+         return;
+     }
+     mouseX = parseInt(e.clientX - offsetX);
+     mouseY = parseInt(e.clientY - offsetY);
+     circle.radius = getDistance(startX, startY, mouseX, mouseY);
+     ctx.clearRect(0, 0, canvas.width, canvas.height);
+     circles.forEach(function(circ) {
+         circ.draw();
+      });
+ }
 
-  canvas.addEventListener("touchstart", drawCircle, false);
-  canvas.addEventListener("touchmove", drawCircle, false);
-  canvas.addEventListener("touchend", stopCircle, false);
+ function getDistance(p1X, p1Y, p2X, p2Y) {
+      return Math.sqrt(Math.pow(p1X - p2X, 2) + Math.pow(p1Y - p2Y, 2))
+   }
+ 
+
 }
 
-var paint_ellipse = function (e) {
-  mouse.x = typeof e.offsetX !== "undefined" ? e.offsetX : e.layerX;
-  mouse.y = typeof e.offsetY !== "undefined" ? e.offsetY : e.layerY;
-  // Tmp canvas is always cleared up before drawing.
-  tmp_ctx.clearRect(0, 0, tmp_canvas.width, tmp_canvas.height);
+function ellipse(event) {
 
-  var x = start_mouse.x;
-  var y = start_mouse.y;
-  var w = mouse.x - x;
-  var h = mouse.y - y;
 
-  tmp_ctx.save(); // save state
-  tmp_ctx.beginPath();
+  canvas.addEventListener("mousedown", startEllipse, false);
+  canvas.addEventListener("mousemove", drawEllipse ,false);
+  canvas.addEventListener("mouseup", endEllipse, false);
+  canvas.addEventListener("touchstart", startEllipse, false);
+  canvas.addEventListener("touchmove", drawEllipse, false);
+  canvas.addEventListener("touchend", endEllipse, false);
 
-  tmp_ctx.translate(x, y);
-  tmp_ctx.scale(w / 2, h / 2);
-  tmp_ctx.arc(1, 1, 1, 0, 2 * Math.PI, false);
+  var last_mousex = last_mousey = 0;
+  var mousex = mousey = 0;
+  var mousedown = false;
+ 
+  function startEllipse(event){
+    last_mousex = parseInt(event.clientX-canvas.offsetLeft);
+    last_mousey = parseInt(event.clientY-canvas.offsetTop);
+      mousedown = true;
+  }
 
-  tmp_ctx.restore(); // restore to original state
-  tmp_ctx.stroke();
-  tmp_ctx.closePath();
-};
-
+  function endEllipse(event){
+    mousedown = false;
+    canvas.removeEventListener("mousedown", startEllipse,false);
+    canvas.removeEventListener("mousemove", drawEllipse,false);
+    canvas.removeEventListener("mouseup", endEllipse,false);
+    canvas.removeEventListener("mouseleave", endEllipse,false);
+  }
+  function drawEllipse(event){
+    mousex = parseInt(event.clientX-canvas.offsetLeft);
+    mousey = parseInt(event.clientY-canvas.offsetTop);
+      if(mousedown) {
+          ctx.clearRect(0,0,canvas.width,canvas.height); //clear canvas
+          //Save
+          ctx.save();
+          ctx.beginPath();
+          //Dynamic scaling
+          var scalex = 1*((mousex-last_mousex)/2);
+          var scaley = 1*((mousey-last_mousey)/2);
+          ctx.scale(scalex,scaley);
+          //Create ellipse
+          var centerx = (last_mousex/scalex)+1;
+          var centery = (last_mousey/scaley)+1;
+          ctx.arc(centerx, centery, 1, 0, 2*Math.PI);
+          //Restore and draw
+          ctx.restore();
+          ctx.strokeStyle = 'black';
+          ctx.lineWidth = 5;
+          ctx.stroke();
+      }
+  }
+}
 //**************** */
 //SELECT FILL TOOL
 
@@ -655,8 +722,27 @@ function linebarWidth() {
 
 //Function to erase image
 function eraseImage(event) {
+  let mouse={x:0,y:0};
+  let eraser;
   erasing = "true";
   tool = "eraser";
+  mouse.x = e.offsetX ;
+  mouse.y =  e.offsetY ;	
+  // Tmp canvas is always cleared up before drawing.
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  var lw = linebarWidth();
+  eraser_width=lw+6;
+  var ss = ctx.strokeStyle;
+  ctx.lineWidth = 1;
+  ctx.strokeStyle = 'black';
+  ctx.beginPath();
+    ctx.strokeRect(mouse.x, mouse.y, eraser_width, eraser_width);
+    ctx.stroke();
+    ctx.closePath();
+    // restore linewidth
+    ctx.lineWidth = lw;
+    ctx.strokeStyle = ss;
+  
 
   //mdn code to clear a portion of the canvas
   //  ctx.beginPath();
@@ -687,29 +773,6 @@ function clearImage() {
 }
 
 
-//Function to save Image
-
-// downloads.addEventListener('click', saveImage) 
-// function saveImage(){
-//   console.log("in")
-//   console.log(canvas.toDataURL());
-//   const link = document.createElement('a');
-//   link.download = 'download.png';
-//   link.href = canvas.toDataURL();
-//   link.click();
-//   link.delete;
-// }
-// // });
-
-// function saveImage(){
-//   var link = canvas.createElement('a');
-//     link.innerHTML = 'download image';
-// link.addEventListener('click', function(ev) {
-//     link.href = canvas.toDataURL();
-//     link.download = "mypainting.png";
-// }, false);
-// canvas.appendChild(link);
-// }
 
 
   function DownloadImage(){
@@ -773,182 +836,18 @@ function reload(){
             image.src = dataURL;
 }
    
-//create a temporary link and download a png file
-//    let image = canvas.toDataURL();
-//    // create temporary link  
-//    let tmpLink = document.createElement( 'a' );  
-//    tmpLink.download= 'image.png'; // set the name of the download file 
-//    tmpLink.href = image;  
- 
-//    // temporarily add link to body and initiate the download  
-//    document.body.appendChild( tmpLink );  
-//    tmpLink.click();  
-//    document.body.removeChild( tmpLink ); 
-// };
+
 
 //Color palette
-// let colors;
-// function changeColors(palette) {
-// 	switch(palette.id) {
-// 		case "red":
-// 			colors = "red";
-// 			break;
-// 		case "red1":
-// 			colors = "#F16161";
-// 			break;
-// 		case "red2":
-// 			colors = "#F69FA0";
-// 			break;
-// 		case "orange":
-// 			colors = "orange";
-// 			break;
-// 		case "orange1":
-// 			colors = "#F99F62";
-// 			break;
-// 		case "orange2":
-// 			colors = "#FBB57B";
-// 			break;
-// 		case "blue":
-// 			colors = "#09C2DB";
-// 			break;
-// 		case "blue1":
-// 			colors = "#8BD3DC";
-// 			break;
-// 		case "blue2":
-// 			colors = "#B9E3E8";
-// 			break;
-// 		case "indigo":
-// 			colors = "#0E38AD";
-// 			break;
-// 		case "indigo1":
-// 			colors = "#546AB2";
-// 			break;
-// 		case "indigo2":
-// 			colors = "#9C96C9";
-// 			break;
-// 		case "green":
-// 			colors = "green";
-// 			break;
-// 		case "green1":
-// 			colors = "#97CD7E";
-// 			break;
-// 		case "green2":
-// 			colors = "#C6E2BB";
-// 			break;
-// 		case "black":
-// 			colors = "black";
-// 			break;
-// 		case "black1":
-// 			colors = "#545454";
-// 			break;
-// 		case "black2":
-// 			colors = "#B2B2B2";
-// 			break;
-// 		case "yellow":
-// 			colors = "yellow";
-// 			break;
-// 		case "yellow1":
-// 			colors = "#F7F754";
-// 			break;
-// 		case "yellow2":
-// 			colors ="#F7F4B1";
-// 			break;
-// 		case "purple":
-// 			colors = "#B9509E";
-// 			break;
-// 		case "purple1":
-// 			colors = "#D178B1";
-// 			break;
-// 		case "purple2":
-// 			colors = "#E3ABCE";
-// 			break;
-// 		case "erase":
-// 			colors = "white";
-// 			break;
-// 	}
+//This collects RGB values in the CSS file so you can assign thm to the strokeStyle()
+// document.querySelector('.color-panel').addEventListener('click',changeColors);
+
+// function changeColors(event){
+//   const newColor=event.target.id;
+//   let asignedNewColorRGB=window.getComputedStyle(document.querySelector(`${newColor}`),null).getPropertyValue('background-color');
+//   return ctx.strokeStyle=asignedNewColorRGB;
 // }
 
 
 
 
-//CRAYON TOOL CODE
-
-// let mouse = { x: 0, y: 0 };
-// crayonCoordinates.x = event.offsetX;
-// crayonCoordinates.y = event.offsetY;
-// let crayonDraw = false;
-// mouse.x = event.offsetX;
-// mouse.y = event.offsetY;
-// let clickX = new Array();
-// let clickY = new Array();
-// let clickDrag = new Array();
-
-// canvas.addEventListener("touchstart", startCrayon, false);
-// canvas.addEventListener("mousedown", startCrayon, false);
-// canvas.addEventListener("touchmove", drawCrayon, false);
-// canvas.addEventListener("mousemove", drawCrayon, false);
-// canvas.addEventListener("mouseup", stopCrayon, false);
-// canvas.addEventListener("touchend", stopCrayon, false);
-// canvas.addEventListener("mouseout", stopCrayon, false);
-
-// function startCrayon(event) {
-//   ctx.lineWidth = 11;
-//   crayonDraw = true;
-//   mymouseDown = true;
-//   //  canvas.addEventListener("mousemove", drawCrayon, false);
-//   //  canvas.addEventListener("touchmove", drawCrayon, false);
-//   //  // reposition(event);
-//   let mouseX = event.pageX - this.offsetLeft;
-//   let mouseY = event.pageY - this.offsetTop;
-//   addClick(event.pageX - this.offsetLeft, event.pageY - this.offsetTop);
-//   redraw();
-// }
-
-// function drawCrayon() {
-//   if (!crayonDraw) return;
-//   if (crayonDraw) {
-//     addClick(
-//       event.pageX - this.offsetLeft,
-//       event.pageY - this.offsetTop,
-//       true
-//     );
-//     redraw();
-//   }
-// }
-
-// function addClick(x, y, dragging) {
-//   clickX.push(x);
-//   clickY.push(y);
-//   clickDrag.push(dragging);
-// }
-
-// function redraw() {
-//   ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height); // Clears the canvas
-//   ctx.lnewWidth = 11;
-//   ctx.strokeStyle = "#df4b26";
-//   // ctx.lineJoin = "round";
-
-//   for (var i = 0; i < clickX.length; i++) {
-//     ctx.beginPath();
-//     if (clickDrag[i] && i) {
-//       ctx.moveTo(clickX[i - 1], clickY[i - 1]);
-//     } else {
-//       ctx.moveTo(clickX[i] - 1, clickY[i]);
-//     }
-//     ctx.lineTo(clickX[i], clickY[i]);
-//     ctx.closePath();
-//     ctx.stroke();
-//   }
-
-//   ctx.globalAlpha = 0.2;
-//   // ctx.drawImage(crayonTextureImage, 0, 0, canvasWidth, canvasHeight);
-// }
-
-// function stopCrayon() {
-//   crayonDraw = false;
-  
-//   ctx.globalAlpha = 1;
-//   canvas.removeEventListener("mousedown", drawCrayon, false);
-//   canvas.removeEventListener("mousemove", drawCrayon, false);
-//   canvas.removeEventListener("touchmove", drawCrayon, false);
-// }
