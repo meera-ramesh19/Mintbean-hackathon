@@ -1,162 +1,167 @@
 <!DOCTYPE html>
 <html>
-  <head>
+
+<head>
     <title> Canvas Paint App</title>
     <link rel="stylesheet" href="canvas.css">
-    <link href="https://fonts.googleapis.com/css?family=Roboto:100" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100" rel="stylesheet">
     <script src="https://kit.fontawesome.com/46b13243e4.js" crossorigin="anonymous"></script>
- </head>
- <body>
-    <h1>CANVAS PAINT APP</h1>
-<div class="container">
+</head>
 
-<div class="toolbar">
-    <!-- <ul>
+<body>
+    <h1>CANVAS PAINT APP</h1>
+    <div class="container">
+        
+        <div class="toolbar">
+            <!-- <ul>
        <li> -->
-        <button class="btn" type="button" id="pencil" data-divbtn="pencil" title="Pencil">
-            <img class="write-tools" src="https://img.icons8.com/ios-filled/20/000000/pencil--v1.png"/>     
-        </button>
-    <!-- </li>
+            <button class="btn" type="button" id="pencil" data-divbtn="pencil" title="Pencil">
+                <img class="write-tools" src="https://img.icons8.com/ios-filled/20/000000/pencil--v1.png" />
+            </button>
+            <!-- </li>
         <li> -->
             <button class="btn" type="button" id="crayon" data-divbtn="crayon" title="Crayon">
-                <img src="https://img.icons8.com/glyph-neue/20/000000/border-color.png"/> 
+                <img src="https://img.icons8.com/glyph-neue/20/000000/border-color.png" />
             </button>
-        <!-- </li>
+            <!-- </li>
     <li> -->
-        <button class="btn" type="button" id="line" data-divbtn="line" title="Line">
-            <img src="https://img.icons8.com/ios-filled/20/000000/line.png"/>    
-        </button>
-    <!-- </li>
+            <button class="btn" type="button" id="line" data-divbtn="line" title="Line">
+                <img src="https://img.icons8.com/ios-filled/20/000000/line.png" />
+            </button>
+            <!-- </li>
          <li> -->
             <button class="btn" type="button" id="points" data-divbtn="points" title="Points">
-                <img src="https://img.icons8.com/material/24/000000/dot-logo.png"/>    
+                <img src="https://img.icons8.com/material/24/000000/dot-logo.png" />
             </button>
-        <!-- </li>
+            <!-- </li>
     <li> -->
-        <!-- <button class="btn" type="button" id="text" data-divbtn="text" title="Text"> -->
+            <!-- <button class="btn" type="button" id="text" data-divbtn="text" title="Text"> -->
             <!-- <img src="https://img.icons8.com/ios-glyphs/20/000000/text.png"/>
         </button> -->
-    <!-- </li> -->
-    <!-- <li> -->
-        <button class="btn" type="button" id="fill" data-divbtn="fill" title="Fill">
-            <img src="https://img.icons8.com/material-sharp/20/000000/fill-color.png"/>
-        </button>
-    <!-- </li>
+            <!-- </li> -->
+            <!-- <li> -->
+            <button class="btn" type="button" id="fill" data-divbtn="fill" title="Fill">
+                <img src="https://img.icons8.com/material-sharp/20/000000/fill-color.png" />
+            </button>
+            <!-- </li>
     <li> -->
-        <button class="btn" type="button" id="rectangle" data-divbtn="rectangle" title="Rectangle">
-            <img src="https://img.icons8.com/fluency-systems-regular/20/000000/rounded-rectangle.png"/>
-        </button>
-    <!-- </li>
+            <button class="btn" type="button" id="rectangle" data-divbtn="rectangle" title="Rectangle">
+                <img src="https://img.icons8.com/fluency-systems-regular/20/000000/rounded-rectangle.png" />
+            </button>
+            <!-- </li>
     <li> -->
-        <button class="btn" type="button" id="circle" data-divbtn="circle" title="Circle">
-            <img src="https://img.icons8.com/ios-filled/20/000000/circled.png"/>
-        </button>
-    <!-- </li>
+            <button class="btn" type="button" id="circle" data-divbtn="circle" title="Circle">
+                <img src="https://img.icons8.com/ios-filled/20/000000/circled.png" />
+            </button>
+            <!-- </li>
     <li> -->
-        <button class="btn" type="button" id="ellipse" data-divbtn="ellipse" title="Ellipse">
-            <img src="https://img.icons8.com/ios-filled/20/000000/ellipse-stroked--v2.png"/>  
-        </button>
-    <!-- </li>
+            <button class="btn" type="button" id="ellipse" data-divbtn="ellipse" title="Ellipse">
+                <img src="https://img.icons8.com/ios-filled/20/000000/ellipse-stroked--v2.png" />
+            </button>
+            <!-- </li>
         <li> -->
-        <button class="btn" type="button" id="eraser" data-divbtn="eraser" title="Eraser">
-            <img src="https://img.icons8.com/ios-glyphs/20/000000/eraser.png"/>
-        </button>
-         <!-- </li>
+            <button class="btn" type="button" id="eraser" data-divbtn="eraser" title="Eraser">
+                <img src="https://img.icons8.com/ios-glyphs/20/000000/eraser.png" />
+            </button>
+            <!-- </li>
     <li> -->
-        <button class="btn" type="button" id="clear" data-divbtn="clear" title="Clear">
-        <img src="https://img.icons8.com/ios-filled/20/000000/recurring-appointment.png"/>
-        </button>
-    <!-- </li>
+            <button class="btn" type="button" id="clear" data-divbtn="clear" title="Clear">
+                <img src="https://img.icons8.com/ios-filled/20/000000/recurring-appointment.png" />
+            </button>
+            <!-- </li>
     <li> -->
-        <button class="btn" type="button" id="save" data-divbtn="save" title="Save" >
-        
-            <img src="https://img.icons8.com/material-rounded/25/000000/save.png"/>
-        </button>
-    <!-- </li>
+            <button class="btn" type="button" id="save" data-divbtn="save" title="Save">
+
+                <img src="https://img.icons8.com/material-rounded/25/000000/save.png" />
+            </button>
+            <!-- </li>
     <li> -->
-        <button class="btn" type="button" id="reload" data-divbtn="reload" title="Reload">
-            <!-- <label for="uploader">Select file:</label> -->
-            <!-- <input type="file" id="uploader" size="4"/> -->
-            <img src="https://img.icons8.com/ios-filled/20/000000/opened-folder.png"/>
-           
-        </button>
-    <!-- </li>
+            <button class="btn" type="button" id="reload" data-divbtn="reload" title="Reload">
+                <!-- <label for="uploader">Select file:</label> -->
+                <!-- <input type="file" id="uploader" size="4"/> -->
+                <img src="https://img.icons8.com/ios-filled/20/000000/opened-folder.png" />
+
+            </button>
+            <!-- </li>
     <li> -->
-        <button class="btn" type="button" id="undo" data-divbtn="undo" title="Undo">
-        <img src="https://img.icons8.com/ios-glyphs/20/000000/undo.png"/>
-       </button>
+            <button class="btn" type="button" id="undo" data-divbtn="undo" title="Undo">
+                <img src="https://img.icons8.com/ios-glyphs/20/000000/undo.png" />
+            </button>
 
 
-      
-    <!-- </li>
+
+            <!-- </li>
   </ul> -->
-     
-</div>
-<div class="panel">
-  <div id="left-panel">
-   <div class="color-panel">
-    <div class="palette red" id="red" onclick="changeColors()"></div>
-    <div class="palette red1" id="red1" onclick="changeColors()"></div>
-    <div class="palette red2" id="red2" onclick="changeColors()"></div>
-    <div class="palette orange" id="orange" onclick="changeColors()"></div>
-    <div class="palette orange1" id="orange1" onclick="changeColors()"></div>
-    <div class="palette orange2" id="orange2" onclick="changeColors()"></div>
-    <div class="palette yellow" id="yellow" onclick="changeColors()"></div>
-    <div class="palette yellow1" id="yellow1" onclick="changeColors()"></div>
-    <div class="palette yellow2" id="yellow2" onclick="changeColors()"></div>
-    <div class="palette green" id="green" onclick="changeColors()"></div>
-    <div class="palette green1" id="green1" onclick="changeColors()"></div>
-    <div class="palette green2" id="green2" onclick="changeColors()"></div>
-    <div class="palette blue" id="blue" onclick="changeColors()"></div>
-    <div class="palette blue1" id="blue1" onclick="changeColors()"></div>
-    <div class="palette blue2" id="blue2" onclick="changeColors()"></div>
-    <div class="palette indigo" id="indigo" onclick="changeColors()"></div>
-    <div class="palette indigo1" id="indigo1" onclick="changeColors()"></div>
-    <div class="palette indigo2" id="indigo2" onclick="changeColors()"></div>
-    <div class="palette purple" id="purple" onclick="changeColors()"></div>
-    <div class="palette purple1" id="purple1" onclick="changeColors()"></div>
-    <div class="palette purple2" id="purple2" onclick="changeColors()"></div>
-    <div class="palette black" id="black" onclick="changeColors()"></div>
-    <div class="palette black1" id="black1" onclick="changeColors()"></div>
-    <div class="palette black2" id="black2" onclick="changeColors()"></div>
-    <div class="palette white" id="erase" onclick="changeColors()">
-        <i class="fas fa-eraser"  id="board-eraser"></i> 
-    </div>
-    <div id="img-data-div">
-        <a href="#" id="img-file" class="downloads" download="image.png"><img src="https://img.icons8.com/ios-glyphs/20/000000/download--v1.png"/></a>
-    </div>
-    <div class="upload">
-    <!-- <label for="uploader">Select file:</label> -->
-            <input type="file" id="uploader" size="4"/>
+
         </div>
-</div> 
-   <!-- </div> -->
-    <div id="brushWidth">
-       <p>Brush Width</p>
-         <form class="input-form">
-           <input type="range" id="myRange" name="amountRange" value="1" min="1" max="50" oninput="this.form.amountInput.value=this.value" onclick="lineWidthRange()">
-           <!-- <div id="sliderInput"> -->
-           <input type="number" name="amountInput" min="1" max="50" value="1" oninput="this.form.amountRange.value=this.value" />
-           <!-- </div> -->
-         </form>
-         <br />
+        <div class="panel">
+            <div id="left-panel">
+                <div class="color-panel" class="frame">
+                    <div class="palette red" id="red" onclick="changeColors()"></div>
+                    <div class="palette red1" id="red1" onclick="changeColors()"></div>
+                    <div class="palette red2" id="red2" onclick="changeColors()"></div>
+                    <div class="palette orange" id="orange" onclick="changeColors()"></div>
+                    <div class="palette orange1" id="orange1" onclick="changeColors()"></div>
+                    <div class="palette orange2" id="orange2" onclick="changeColors()"></div>
+                    <div class="palette yellow" id="yellow" onclick="changeColors()"></div>
+                    <div class="palette yellow1" id="yellow1" onclick="changeColors()"></div>
+                    <div class="palette yellow2" id="yellow2" onclick="changeColors()"></div>
+                    <div class="palette green" id="green" onclick="changeColors()"></div>
+                    <div class="palette green1" id="green1" onclick="changeColors()"></div>
+                    <div class="palette green2" id="green2" onclick="changeColors()"></div>
+                    <div class="palette blue" id="blue" onclick="changeColors()"></div>
+                    <div class="palette blue1" id="blue1" onclick="changeColors()"></div>
+                    <div class="palette blue2" id="blue2" onclick="changeColors()"></div>
+                    <div class="palette indigo" id="indigo" onclick="changeColors()"></div>
+                    <div class="palette indigo1" id="indigo1" onclick="changeColors()"></div>
+                    <div class="palette indigo2" id="indigo2" onclick="changeColors()"></div>
+                    <div class="palette purple" id="purple" onclick="changeColors()"></div>
+                    <div class="palette purple1" id="purple1" onclick="changeColors()"></div>
+                    <div class="palette purple2" id="purple2" onclick="changeColors()"></div>
+                    <div class="palette black" id="black" onclick="changeColors()"></div>
+                    <div class="palette black1" id="black1" onclick="changeColors()"></div>
+                    <div class="palette black2" id="black2" onclick="changeColors()"></div>
+                    <div class="palette white" id="erase" onclick="changeColors()">
+                        <i class="fas fa-eraser" id="board-eraser"></i>
+                    </div>
+                    <div id="img-data-div">
+                        <a href="#" id="img-file" class="downloads" download="image.png"><img
+                                src="https://img.icons8.com/ios-glyphs/20/000000/download--v1.png" /></a>
+                    </div>
+                    <div class="upload">
+                        <!-- <label for="uploader">Select file:</label> -->
+                        <input type="file" id="uploader" size="4" />
+                    </div>
+                </div>
+                <!-- </div> -->
+                <div id="brushWidth">
+                    <p>Brush Width</p>
+                    <form class="input-form">
+                        <input type="range" id="myRange" name="amountRange" value="1" min="1" max="50"
+                            oninput="this.form.amountInput.value=this.value" onclick="lineWidthRange()">
+                        <!-- <div id="sliderInput"> -->
+                        <input type="number" name="amountInput" min="1" max="50" value="1"
+                            oninput="this.form.amountRange.value=this.value" />
+                        <!-- </div> -->
+                    </form>
+                    <br />
+                </div>
+
+
+            </div>
+
+
+            <div class="right-panel" id="sketch-pad">
+
+                <canvas id="my-canvas" class="frame"
+                    onSelectStart="this.style.cursor='crosshair'; return false;"></canvas>
+
+            </div>
+
+        </div>
+
     </div>
-    
-
-</div>
-  
-
-<div class="right-panel" id="sketch-pad">
-   
-        <canvas id="my-canvas" onSelectStart="this.style.cursor='crosshair'; return false;"></canvas>
-       
-</div>
-
-</div>  
-
-</div>
-<script src="canvas.js"></script>
+    <script src="canvas.js"></script>
 </body>
-</html>
 
-     
+</html>
