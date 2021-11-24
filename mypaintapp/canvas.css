@@ -8,6 +8,8 @@
 body{
     background-color: #E6FEFF;
     font-family: 'Open Sans', sans-serif;
+    margin: auto;
+    align-items: center;
 }
 .container {
     /* margin: 1rem; */
@@ -91,13 +93,14 @@ button {
     background: whitesmoke;
 }
 
-/* #brushWidth p {
-    padding: 0 2rem;
+#brushWidth p {
+    /* padding: 0 2rem; */
     width: 100%;
-} */
+    text-align: center;
+}
 
 input {
-    /* margin-left: 2rem; */
+    margin-left: 2rem;
 }
 
 .input-form {
@@ -121,11 +124,8 @@ input {
     padding: 1rem 1rem;
 }
 
-/* .frame{
-    border: 20px solid brown;
-} */
-.palette {
 
+.palette {
     border: 1px solid #ccc;
     box-shadow: 2px 2px 6px 0px rgba(0, 0, 0, 0.3);
     width: 100%;
@@ -242,14 +242,9 @@ input {
 @media(min-width: 1000px) {
 
     .container {
-        /* margin:2rem 1rem;
-        border:2px solid black;
-        max-width:1200px;
-       width:80vw;
-        
-        overflow:hidden; */
-        height: 90vh;
-        margin: 4rem auto;
+    width:80vw;
+    
+    /* margin: auto; */
 
     }
 
@@ -258,6 +253,8 @@ input {
         justify-content: center;
         align-items: center;
         width: 100%;
+        height: auto;
+        
 
     }
 
@@ -281,11 +278,9 @@ input {
 
     .right-panel {
         width: 80%;
-        height: 75vh;
+        height: 100vh;
         margin-top: 1rem;
-        /* display:block;
-        margin:0 auto;
-        border:2px solid black; */
+        height: 65vh;
     }
 
     .color-panel {
