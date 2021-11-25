@@ -235,9 +235,13 @@ function changeColors(palette) {
       //  if (mode!="eraser"){
         //specifies the current line width
         ctx.lineWidth = linebarWidth();
+
         //style of endcaps for a line
         ctx.lineCap = "round";
         ctx.lineJoin = "round";
+        if (event.target == canvas) {
+          event.preventDefault();
+        }
         if (erasing == "true") {
           // ctx.clearRect(0, 0, canvas.width, canvas.height);
           ctx.globalCompositeOperation = "destination-out";
@@ -245,13 +249,19 @@ function changeColors(palette) {
           ctx.globalCompositeOperation = "source-over";
         }
         //moves to specified point without creating a line
-        // if (event.type==='touchmove'){
-        ctx.moveTo(coord.x, coord.y);
+         if (event.type==='touchmove'){
+              ctx.moveTo(event.touches[0].coord.x, event.touches[0].coord.y);
+         } else if(event.type=='mousemove'){
+              ctx.moveTo(coord.x,coord.y)
+         }
         reposition(event);
         ctx.strokeStyle=colors;
         //adds anew point and creates a line from that point to the last specified point
-        ctx.lineTo(coord.x, coord.y);
-        
+        if (event.type==='touchmove'){
+          ctx.lineTo(event.touches[0].coord.x, event.touches[0].coord.y);
+       } else if(event.type=='mousemove'){
+           ctx.lineTo(coord.x, coord.y);
+       }
         //draws the path on to the canvas
         ctx.stroke();
         ctx.closePath();
@@ -289,10 +299,18 @@ function pencil(event) {
 
 	//Paint includes line width, line cap, and color
 	drawPencil = function(event) {
+    if (event.target == canvas) {
+      event.preventDefault();
+    }
     ctx.lineWidth = linebarWidth();
 		ctx.lineJoin = 'round';
 		ctx.strokeStyle = colors;
-		ctx.lineTo(mouse.x, mouse.y);
+    if (event.type==='touchmove'){
+      ctx.lineTo(event.touches[0].mouse.x, event.touches[0].mouse.y);
+   } else if(event.type=='mousemove'){
+       ctx.lineTo(mouse.x, mouse.y);
+   }
+		// ctx.lineTo(mouse.x, mouse.y);
 		ctx.stroke();
 	};
 
@@ -306,7 +324,14 @@ function pencil(event) {
 	pencilMousedown = function(event){
     
 		ctx.beginPath();
-		ctx.moveTo(mouse.x, mouse.y);
+    if (event.type==='touchmove'){
+      ctx.moveTo(event.touches[0].mouse.x, event.touches[0].mouse.y);
+   } else if(event.type=='mousemove'){
+       ctx.moveTo(mouse.x, mouse.y);
+   }
+   if (event.target == canvas) {
+    event.preventDefault();
+  }
 		canvas.addEventListener('mousemove', drawPencil, false);
 	};
 
@@ -360,8 +385,17 @@ function crayon(event) {
       let pos = getCursorPosition(event);
       dragging = true;
       lastPos = pos;
+      if (event.target == canvas) {
+        event.preventDefault();
+      }
       ctx.beginPath();
+
+      if (event.type==='touchmove'){
+        ctx.moveTo(event.touches[0].lastPos.x, event.touches[0].lastPos.y);
+     } else if(event.type=='mousemove'){
       ctx.moveTo(lastPos.x, lastPos.y);
+     }
+      
   }
               
   function stopCrayon(event) {
@@ -392,6 +426,14 @@ function crayon(event) {
           ctx.strokeStyle= colors;
           // ctx.beginPath();
           // ctx.moveTo(lastPos.x, lastPos.y);
+          if (event.target == canvas) {
+            event.preventDefault();
+          }
+          if (event.type==='touchmove'){
+            ctx.lineTo(event.touches[0].pos.x, event.touches[0].pos.y);
+          } else if(event.type=='mousemove'){
+             ctx.lineTo(pos.x, lastPos.y);
+         }
           ctx.lineTo(pos.x, pos.y);
           ctx.stroke();
       }
@@ -435,14 +477,23 @@ function drawPoints(event) {
   }
 
   function getPosition(event) {
+    if (event.target == canvas) {
+      event.preventDefault();
     var rect = canvas.getBoundingClientRect();
-    var x = event.clientX - rect.left;
-    var y = event.clientY - rect.top;
+    if(event.type=='touchmove'){
+      let x = event.touches[0].clientX - rect.left;
+      let y = event.touches[0].clientY - rect.top;
+    }else if(event.type=='mousemove'){
+       let x = event.clientX - rect.left;
+       let y = event.clientY - rect.top;
+    }
     console.log(x, y);
     drawCoordinates(x, y);
   }
 
   function drawCoordinates(x, y) {
+    
+    }
      ctx.strokeStyle=colors;
     ctx.fillStyle = ctx.strokeStyle; // Red color
     ctx.beginPath();
@@ -510,16 +561,33 @@ function startLine(event){
 
   // startPosition = getClientOffset(event);
   // isDrawStart = true;
-  x = event.offsetX;
-  y = event.offsetY;
+  if(event.type=='touchmove'){
+    let x = event.touches[0].offsetX ;
+    let y = event.touches[0].offsetY;
+  }else if(event.type=='mousemove'){
+    
+  
+      x = event.offsetX;
+      y = event.offsetY;
+  }
   isDrawing = true;
 }
 
 function drawLine(event) {
   if (isDrawing === true) {
-    drawJoinLine(ctx, x, y, event.offsetX, event.offsetY);
-    x = event.offsetX;
-    y = event.offsetY;
+    let touchesX=event.offsetX;
+    let touchesY=event.offsetY;
+
+    if(event.type=='touchmove'){
+      drawJoinLine(ctx, x, y, event.touches[0].touchesX, event.touches[0].touchesY);
+        
+    }else if(event.type=='mousemove'){
+      
+      drawJoinLine(ctx, x, y, event.offsetX, event.offsetY);
+        
+    }
+    
+    
  }
 
 
@@ -601,8 +669,15 @@ function rectangle(event) {
       canvas.addEventListener("touchend", endRect, false);
        //Mousedown
        function setRect(event) {
-          last_mousex = parseInt(event.clientX-canvasx);
-          last_mousey = parseInt(event.clientY-canvasy);
+          let positionX=event.clientX;
+          let positionY=event.clientY;
+          if (event=='touchmouse'){
+            last_mousex = parseInt(event.touches[0].positionX-canvasx);
+            last_mousey = parseInt(event.touches[0].positiony-canvasy);
+          } else if (event=='mousemove'){
+            last_mousex = parseInt(event.clientX-canvasx);
+            last_mousey = parseInt(event.clientY-canvasy);
+          }
           mousedown = true;
       }
       //Mouseup
@@ -623,8 +698,13 @@ function rectangle(event) {
       //Mousemove
       
        function drawRect(event) {
-          mousex = parseInt(event.clientX-canvasx);
-         mousey = parseInt(event.clientY-canvasy);
+         if(event=='touchmouse'){
+          mousex = parseInt(event.touches[0].clientX-canvasx);
+          mousey = parseInt(event.touches[0].clientY-canvasy);
+          } else if (event=='mousemove') 
+          {mousex = parseInt(event.clientX-canvasx);
+          mousey = parseInt(event.clientY-canvasy);
+          }
           if(mousedown) {
                  ctx.clearRect(0,0,canvas.width,canvas.height); //clear canvas
                  ctx.strokeStyle = colors;
@@ -728,14 +808,19 @@ function circleTool(event) {
  }
 
  function drawCircleMouseDown(e) {
+   if(event=='touchmouse'){
+    startX = parseInt(e.touches[0].clientX - offsetX);
+    startY = parseInt(e.touches[0].clientY - offsetY);
+   }else if (event=='mousemove'){
      startX = parseInt(e.clientX - offsetX);
      startY = parseInt(e.clientY - offsetY);
-     isMouseDown = true;
+     }
+       isMouseDown = true;
      circle = new Circle(startX, startY);
      circles.push(circle);
    }
 
- function drawCircleMouseUp() {
+ function drawCircleMouseUp(e) {
    isMouseDown = false;
    circle = null;
    canvas.removeEventListener('mousedown', drawCircleMouseDown, false);
@@ -748,8 +833,13 @@ function circleTool(event) {
      if (!isMouseDown) {
          return;
      }
+     if(event=='touchmouse'){
+      mouseX = parseInt(e.touches[0].clientX - offsetX);
+      mouseY = parseInt(e.touches[0].clientY - offsetY);
+     }else if (event=='mousemove'){
      mouseX = parseInt(e.clientX - offsetX);
      mouseY = parseInt(e.clientY - offsetY);
+     }
      circle.radius = getDistance(startX, startY, mouseX, mouseY);
      ctx.clearRect(0, 0, canvas.width, canvas.height);
      circles.forEach(function(circ) {
@@ -782,9 +872,13 @@ function ellipse(event) {
   var mousedown = false;
  
   function startEllipse(event){
+    if(event=='touchmouse'){
+    last_mousex = parseInt(event.touches[0].clientX-canvas.offsetLeft);
+    last_mousey = parseInt(event.touches[0].clientY-canvas.offsetTop);
+    }else if(event='mousemove'){
     last_mousex = parseInt(event.clientX-canvas.offsetLeft);
     last_mousey = parseInt(event.clientY-canvas.offsetTop);
-      mousedown = true;
+      }  mousedown = true;
   }
 
   function endEllipse(event){
@@ -799,10 +893,13 @@ function ellipse(event) {
   }
 
   function drawEllipse(event){
-
+    if(event=='touchmouse'){
+      last_mousex = parseInt(event.touches[0].clientX-canvas.offsetLeft);
+      last_mousey = parseInt(event.touches[0].clientY-canvas.offsetTop);
+      }else if(event='mousemove'){
     mousex = parseInt(event.clientX-canvas.offsetLeft);
     mousey = parseInt(event.clientY-canvas.offsetTop);
-      if(mousedown) {
+    }  if(mousedown) {
           ctx.clearRect(0,0,canvas.width,canvas.height); //clear canvas
           //Save
           ctx.save();
