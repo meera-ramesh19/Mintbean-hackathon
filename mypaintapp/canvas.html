@@ -1,96 +1,105 @@
 <!DOCTYPE html>
 <html>
-  <head>
+
+<head>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Mansalva&family=Open+Sans&display=swap" rel="stylesheet">
     <title> Canvas Paint App</title>
     <link rel="stylesheet" href="canvas.css">
     <link rel="icon" href="../favicon.png">
-    <link href="https://fonts.googleapis.com/css?family=Roboto:100" rel="stylesheet"> 
+    
     <script src="https://kit.fontawesome.com/46b13243e4.js" crossorigin="anonymous"></script>
- </head>
- <body>
-    <h1>CANVAS PAINT APP</h1>
-<div class="container">
+</head>
 
-<div class="toolbar">
-    <!-- <ul>
+<body>
+    <h1>CANVAS PAINT APP</h1>
+    <div class="container">
+        
+        <div class="toolbar">
+            <!-- <ul>
        <li> -->
-        <button class="btn" type="button" id="pencil" data-divbtn="pencil" title="Pencil">
-            <img class="write-tools" src="https://img.icons8.com/ios-filled/20/000000/pencil--v1.png"/>     
-        </button>
-    <!-- </li>
+            <button class="btn" type="button" id="pencil" data-divbtn="pencil" title="Pencil">
+                <img class="write-tools" src="https://img.icons8.com/ios-filled/20/000000/pencil--v1.png" />
+            </button>
+            <!-- </li>
         <li> -->
             <button class="btn" type="button" id="crayon" data-divbtn="crayon" title="Crayon">
-                <img src="https://img.icons8.com/glyph-neue/20/000000/border-color.png"/> 
+                <img src="https://img.icons8.com/glyph-neue/20/000000/border-color.png" />
             </button>
-        <!-- </li>
+            <!-- </li>
     <li> -->
-        <button class="btn" type="button" id="line" data-divbtn="line" title="Line">
-            <img src="https://img.icons8.com/ios-filled/20/000000/line.png"/>    
-        </button>
-    <!-- </li>
+            <button class="btn" type="button" id="line" data-divbtn="line" title="Line">
+                <img src="https://img.icons8.com/ios-filled/20/000000/line.png" />
+            </button>
+            <!-- </li>
          <li> -->
             <button class="btn" type="button" id="points" data-divbtn="points" title="Points">
-                <img src="https://img.icons8.com/material/24/000000/dot-logo.png"/>    
+                <img src="https://img.icons8.com/material/24/000000/dot-logo.png" />
             </button>
-        <!-- </li>
+            <!-- </li>
     <li> -->
-        <!-- <button class="btn" type="button" id="text" data-divbtn="text" title="Text"> -->
+            <!-- <button class="btn" type="button" id="text" data-divbtn="text" title="Text"> -->
             <!-- <img src="https://img.icons8.com/ios-glyphs/20/000000/text.png"/>
         </button> -->
-    <!-- </li> -->
-    <!-- <li> -->
-        <button class="btn" type="button" id="fill" data-divbtn="fill" title="Fill">
-            <img src="https://img.icons8.com/material-sharp/20/000000/fill-color.png"/>
-        </button>
-    <!-- </li>
+            <!-- </li> -->
+            <!-- <li> -->
+            <button class="btn" type="button" id="fill" data-divbtn="fill" title="Fill">
+                <img src="https://img.icons8.com/material-sharp/20/000000/fill-color.png" />
+            </button>
+            <!-- </li>
     <li> -->
-        <button class="btn" type="button" id="rectangle" data-divbtn="rectangle" title="Rectangle">
-            <img src="https://img.icons8.com/fluency-systems-regular/20/000000/rounded-rectangle.png"/>
-        </button>
-    <!-- </li>
+            <button class="btn" type="button" id="rectangle" data-divbtn="rectangle" title="Rectangle">
+                <img src="https://img.icons8.com/fluency-systems-regular/20/000000/rounded-rectangle.png" />
+            </button>
+            <!-- </li>
     <li> -->
-        <button class="btn" type="button" id="circle" data-divbtn="circle" title="Circle">
-            <img src="https://img.icons8.com/ios-filled/20/000000/circled.png"/>
-        </button>
-    <!-- </li>
+            <button class="btn" type="button" id="circle" data-divbtn="circle" title="Circle">
+                <img src="https://img.icons8.com/ios-filled/20/000000/circled.png" />
+            </button>
+            <!-- </li>
     <li> -->
-        <button class="btn" type="button" id="ellipse" data-divbtn="ellipse" title="Ellipse">
-            <img src="https://img.icons8.com/ios-filled/20/000000/ellipse-stroked--v2.png"/>  
-        </button>
-    <!-- </li>
+            <button class="btn" type="button" id="ellipse" data-divbtn="ellipse" title="Ellipse">
+                <img src="https://img.icons8.com/ios-filled/20/000000/ellipse-stroked--v2.png" />
+            </button>
+            <!-- </li>
         <li> -->
-        <button class="btn" type="button" id="eraser" data-divbtn="eraser" title="Eraser">
-            <img src="https://img.icons8.com/ios-glyphs/20/000000/eraser.png"/>
-        </button>
-         <!-- </li>
+            <button class="btn" type="button" id="eraser" data-divbtn="eraser" title="Eraser">
+                <img src="https://img.icons8.com/ios-glyphs/20/000000/eraser.png" />
+            </button>
+            <!-- </li>
     <li> -->
-        <button class="btn" type="button" id="clear" data-divbtn="clear" title="Clear">
-        <img src="https://img.icons8.com/ios-filled/20/000000/recurring-appointment.png"/>
-        </button>
-    <!-- </li>
+            <button class="btn" type="button" id="clear" data-divbtn="clear" title="Clear">
+                <img src="https://img.icons8.com/ios-filled/20/000000/recurring-appointment.png" />
+            </button>
+            <!-- </li>
     <li> -->
-        <button class="btn" type="button" id="save" data-divbtn="save" title="Save" >
-        
-            <img src="https://img.icons8.com/material-rounded/25/000000/save.png"/>
-        </button>
-    <!-- </li>
+            <button class="btn" type="button" id="save" data-divbtn="save" title="Save">
+
+                <img src="https://img.icons8.com/material-rounded/25/000000/save.png" />
+            </button>
+            <!-- </li>
     <li> -->
-        <!-- <button class="btn" type="button" id="reload" data-divbtn="reload" title="Reload">
-            <!-- <label for="uploader">Select file:</label> -->
-            <!-- <input type="file" id="uploader" size="4"/> --
-            <img src="https://img.icons8.com/ios-filled/20/000000/opened-folder.png"/>
-           
-        </button> -->
-    <!-- </li>
+
+<!--             <button class="btn" type="button" id="reload" data-divbtn="reload" title="Reload">
+                <!-- <label for="uploader">Select file:</label> -->
+                <!-- <input type="file" id="uploader" size="4"/> -->
+                <img src="https://img.icons8.com/ios-filled/20/000000/opened-folder.png" />
+
+            </button>
+            <!-- </li>
     <li> -->
-        <!-- <button class="btn" type="button" id="undo" data-divbtn="undo" title="Undo">
-        <img src="https://img.icons8.com/ios-glyphs/20/000000/undo.png"/>
-       </button> -->
+            <button class="btn" type="button" id="undo" data-divbtn="undo" title="Undo">
+                <img src="https://img.icons8.com/ios-glyphs/20/000000/undo.png" />
+            </button>
+ -->
 
 
-      
-    <!-- </li>
+
+            <!-- </li>
   </ul> -->
+
      
 </div>
 <div class="panel">
@@ -144,20 +153,18 @@
     </div>
     
 
-</div>
-  
 
-<div class="right-panel" id="sketch-pad">
-   
-        <canvas id="my-canvas" onSelectStart="this.style.cursor='crosshair'; return false;"></canvas>
-       
-</div>
+            <div class="right-panel" id="sketch-pad">
 
-</div>  
+                <canvas id="my-canvas" class="frame"
+                    onSelectStart="this.style.cursor='crosshair'; return false;"></canvas>
 
-</div>
-<script src="canvas.js"></script>
+            </div>
+
+        </div>
+
+    </div>
+    <script src="canvas.js"></script>
 </body>
-</html>
 
-     
+</html>
