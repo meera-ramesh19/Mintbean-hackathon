@@ -3,6 +3,7 @@
   <head>
     <title> Canvas Paint App</title>
     <link rel="stylesheet" href="canvas.css">
+    <link rel="icon" href="../favicon.png">
     <link href="https://fonts.googleapis.com/css?family=Roboto:100" rel="stylesheet"> 
     <script src="https://kit.fontawesome.com/46b13243e4.js" crossorigin="anonymous"></script>
  </head>
@@ -74,17 +75,17 @@
         </button>
     <!-- </li>
     <li> -->
-        <button class="btn" type="button" id="reload" data-divbtn="reload" title="Reload">
+        <!-- <button class="btn" type="button" id="reload" data-divbtn="reload" title="Reload">
             <!-- <label for="uploader">Select file:</label> -->
-            <!-- <input type="file" id="uploader" size="4"/> -->
+            <!-- <input type="file" id="uploader" size="4"/> --
             <img src="https://img.icons8.com/ios-filled/20/000000/opened-folder.png"/>
            
-        </button>
+        </button> -->
     <!-- </li>
     <li> -->
-        <button class="btn" type="button" id="undo" data-divbtn="undo" title="Undo">
+        <!-- <button class="btn" type="button" id="undo" data-divbtn="undo" title="Undo">
         <img src="https://img.icons8.com/ios-glyphs/20/000000/undo.png"/>
-       </button>
+       </button> -->
 
 
       
@@ -95,46 +96,46 @@
 <div class="panel">
   <div id="left-panel">
    <div class="color-panel">
-    <div class="palette red" id="red" onclick="changeColors()"></div>
-    <div class="palette red1" id="red1" onclick="changeColors()"></div>
-    <div class="palette red2" id="red2" onclick="changeColors()"></div>
-    <div class="palette orange" id="orange" onclick="changeColors()"></div>
-    <div class="palette orange1" id="orange1" onclick="changeColors()"></div>
-    <div class="palette orange2" id="orange2" onclick="changeColors()"></div>
-    <div class="palette yellow" id="yellow" onclick="changeColors()"></div>
-    <div class="palette yellow1" id="yellow1" onclick="changeColors()"></div>
-    <div class="palette yellow2" id="yellow2" onclick="changeColors()"></div>
-    <div class="palette green" id="green" onclick="changeColors()"></div>
-    <div class="palette green1" id="green1" onclick="changeColors()"></div>
-    <div class="palette green2" id="green2" onclick="changeColors()"></div>
-    <div class="palette blue" id="blue" onclick="changeColors()"></div>
-    <div class="palette blue1" id="blue1" onclick="changeColors()"></div>
-    <div class="palette blue2" id="blue2" onclick="changeColors()"></div>
-    <div class="palette indigo" id="indigo" onclick="changeColors()"></div>
-    <div class="palette indigo1" id="indigo1" onclick="changeColors()"></div>
-    <div class="palette indigo2" id="indigo2" onclick="changeColors()"></div>
-    <div class="palette purple" id="purple" onclick="changeColors()"></div>
-    <div class="palette purple1" id="purple1" onclick="changeColors()"></div>
-    <div class="palette purple2" id="purple2" onclick="changeColors()"></div>
-    <div class="palette black" id="black" onclick="changeColors()"></div>
-    <div class="palette black1" id="black1" onclick="changeColors()"></div>
-    <div class="palette black2" id="black2" onclick="changeColors()"></div>
-    <div class="palette white" id="erase" onclick="changeColors()">
-        <i class="fas fa-eraser"  id="board-eraser"></i> 
+    <div class="palette red" id="red" onclick="changeColors(this)"></div>
+    <div class="palette red1" id="red1" onclick="changeColors(this)"></div>
+    <div class="palette red2" id="red2" onclick="changeColors(this)"></div>
+    <div class="palette orange" id="orange" onclick="changeColors(this)"></div>
+    <div class="palette orange1" id="orange1" onclick="changeColors(this)"></div>
+    <div class="palette orange2" id="orange2" onclick="changeColors(this)"></div>
+    <div class="palette yellow" id="yellow" onclick="changeColors(this)"></div>
+    <div class="palette yellow1" id="yellow1" onclick="changeColors(this)"></div>
+    <div class="palette yellow2" id="yellow2" onclick="changeColors(this)"></div>
+    <div class="palette green" id="green" onclick="changecolors(this)"></div>
+    <div class="palette green1" id="green1" onclick="changeColors(this)"></div>
+    <div class="palette green2" id="green2" onclick="changeColors(this)"></div>
+    <div class="palette blue" id="blue" onclick="changeColors(this)"></div>
+    <div class="palette blue1" id="blue1" onclick="changeColors(this)"></div>
+    <div class="palette blue2" id="blue2" onclick="changeColors(this)"></div>
+    <div class="palette indigo" id="indigo" onclick="changeColors(this)"></div>
+    <div class="palette indigo1" id="indigo1" onclick="changeColors(this)"></div>
+    <div class="palette indigo2" id="indigo2" onclick="changeColors(this)"></div>
+    <div class="palette purple" id="purple" onclick="changeColors(this)"></div>
+    <div class="palette purple1" id="purple1" onclick="changeColors(this)"></div>
+    <div class="palette purple2" id="purple2" onclick="changeColors(this)"></div>
+    <div class="palette black" id="black" onclick="changeColors(this)"></div>
+    <div class="palette black1" id="black1" onclick="changeColors(this)"></div>
+    <div class="palette black2" id="black2" onclick="changeColors(this)"></div>
+    <div class="palette white" id="eraser" onclick="changeColors(this)">
+        <i class="fas fa-eraser" id="board-eraser"></i>
     </div>
     <div id="img-data-div">
         <a href="#" id="img-file" class="downloads" download="image.png"><img src="https://img.icons8.com/ios-glyphs/20/000000/download--v1.png"/></a>
     </div>
-    <div class="upload">
+     <div class="upload"> 
     <!-- <label for="uploader">Select file:</label> -->
-            <input type="file" id="uploader" size="4"/>
-        </div>
+    <!-- <input type="file" id="fileinput" accept = "image/*"> -->
+         </div>  
 </div> 
    <!-- </div> -->
     <div id="brushWidth">
        <p>Brush Width</p>
          <form class="input-form">
-           <input type="range" id="myRange" name="amountRange" value="1" min="1" max="50" oninput="this.form.amountInput.value=this.value" onclick="lineWidthRange()">
+           <input type="range" id="myRange" name="amountRange" value="1" min="1" max="50" oninput="this.form.amountInput.value=this.value" onclick="linebarWidth()">
            <!-- <div id="sliderInput"> -->
            <input type="number" name="amountInput" min="1" max="50" value="1" oninput="this.form.amountRange.value=this.value" />
            <!-- </div> -->

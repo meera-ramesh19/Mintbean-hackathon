@@ -36,9 +36,9 @@ h1{
 	background:#F4F4F4;
 	display: block;
 } */
-/* input[type="file"]{
+input[type="file"]{
     display:none;
-} */
+}
 button{
     background:none; 
     border:none;
@@ -63,7 +63,7 @@ button{
     display:block;
     margin:2rem auto;
     width:90%;
-    height:60vh;
+    height:45vh;
     background:whitesmoke;
     /* border:2px solid black; */
     box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
@@ -78,14 +78,14 @@ button{
     background:whitesmoke;
 }
 #brushWidth p{
-    padding: 0 2rem;
+    padding: 0 1rem;
     width:150px;
 }
 input{ 
-    margin-left: 2rem;
+    margin-left: 1rem;
 } 
 .input-form{
-    display:flex;
+    display:block;
     justify-content: center;
     align-items: center;
     /* padding:1rem 0; */
@@ -141,6 +141,7 @@ input{
 .purple1 { background: #D178B1; }
 .purple2 { background: #E3ABCE; }
 .white {background: white;}
+#board-eraser {background: whitesmoke;}
 
 /* #points{
     cursor:crosshair;
@@ -208,7 +209,7 @@ input{
         box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     }
         
-    
+   
     #brushWidth{
         text-align:center;
         width:200px;
@@ -227,7 +228,7 @@ input{
     }
     input{ 
         /* margin-top: 0.5rem; */
-    } 
+    }  
     .input-form{
         display:block;
         justify-content: center;
