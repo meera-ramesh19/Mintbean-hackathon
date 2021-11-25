@@ -8,8 +8,8 @@
 body{
     background-color: #E6FEFF;
     font-family: 'Open Sans', sans-serif;
-    margin: auto;
-    align-items: center;
+/*     margin: auto;
+    align-items: center; */
 }
 .container {
     /* margin: 1rem; */
@@ -47,19 +47,21 @@ h1 {
 	background:#F4F4F4;
 	display: block;
 } */
-/* input[type="file"]{
+/*input[type="file"]{
     display:none;
-} */
-button {
-    background: none;
-    border: none;
-    cursor: pointer;
-}
 
-.toolbar {
-    padding: 0.5rem 0;
-    display: flex;
-    justify-content: space-around;
+} */
+
+button{
+    background:none; 
+    border:none;
+    cursor:pointer;
+   }
+   .toolbar{
+    padding:0.5rem 0;
+    display:flex;
+    justify-content:space-around;
+
     /* width:100%; */
     text-align: center;
 }
@@ -73,6 +75,7 @@ button {
 
 }
 
+
 .right-panel {
     cursor: pointer;
     display: block;
@@ -82,7 +85,8 @@ button {
     background: whitesmoke;
     border:20px solid #804500;
     
-}
+
+
 
 #brushWidth {
     width: 100%;
@@ -92,6 +96,7 @@ button {
     /* border:2px solid black; */
     background: whitesmoke;
 }
+
 
 #brushWidth p {
     /* padding: 0 2rem; */
@@ -105,6 +110,7 @@ input {
 
 .input-form {
     display: flex;
+
     justify-content: center;
     align-items: center;
     /* padding:1rem 0; */
@@ -235,6 +241,11 @@ input {
     background: white;
 }
 
+#board-eraser {
+  background: whitesmoke;
+  }
+
+
 /* #points{
     cursor:crosshair;
 } */
@@ -242,10 +253,9 @@ input {
 @media(min-width: 1000px) {
 
     .container {
-    width:80vw;
-    
-    /* margin: auto; */
-
+       height:90vh;
+      margin:4rem auto;
+     
     }
 
     .panel {
@@ -300,6 +310,7 @@ input {
     }
 
 
+
     #brushWidth {
         text-align: center;
         width: 100%;
@@ -307,7 +318,7 @@ input {
         padding: 0.5rem 0rem;
         display: block;
         border:10px solid #804500;
-        /* border:2px solid black; */
+      /* border:2px solid black; */
         margin-top: 1rem;
         /* background:whitesmoke; */
         /* box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; */
@@ -321,10 +332,13 @@ input {
 
     input {
         /* margin-top: 0.5rem; */
+
     }
 
-    .input-form {
-        display: block;
+
+    .input-form{
+        display:block;
+
         justify-content: center;
         align-items: center;
         /* /* padding:0.5rem 0; */
