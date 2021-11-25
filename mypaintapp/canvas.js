@@ -126,6 +126,16 @@ function init() {
     canvas.removeEventListener("touchmove", draw, false);
   }
   
+//This collects the RGB values in the CSS file so you can assign them to the strokeStyle()
+const changeColors = (event) => {
+  const newColor = event.target.id;
+  let assignedNewColorRGB = window.getComputedStyle(document.querySelector(`#${newColor}`), null).getPropertyValue('background-color');
+  return ctx.strokeStyle = assignedNewColorRGB;
+}
+document.querySelector('.color-panel').addEventListener('click', changeColors)
+
+
+  
   function draw(event) {
     if (!drawing) return;
     if (drawing && mymouseDown) {
@@ -133,7 +143,9 @@ function init() {
       ctx.beginPath();
       //  if (mode!="eraser"){
         //specifies the current line width
-        ctx.lineWidth = 5;
+        const lineWidth = document.querySelector('#myRange').value
+        ctx.lineWidth = lineWidth;
+        // ctx.lineWidth = 5;
         //style of endcaps for a line
         ctx.lineCap = "round";
         ctx.lineJoin = "round";
@@ -815,7 +827,7 @@ function OpenImage(){
     
       const imageLoader = document.getElementById("uploader");
       imageLoader.addEventListener("change", uploadImage);
-
+    }
   // let img = new Image();
   // // Once the image is loaded clear the canvas and draw it
   // img.onload = function(){
@@ -824,7 +836,7 @@ function OpenImage(){
   // }
   // img.src = 'image.png';
   
-}
+
 
 
 function reload(){

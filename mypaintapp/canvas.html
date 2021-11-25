@@ -13,17 +13,17 @@
 <div class="toolbar">
     <!-- <ul>
        <li> -->
-        <button class="btn" type="button" id="pencil" data-divbtn="pencil" title="Pencil">
+        <button class="btn" type="button" id="pencil" data-divbtn="pencil" title="Pencil" display="hidden">
             <img class="write-tools" src="https://img.icons8.com/ios-filled/20/000000/pencil--v1.png"/>     
         </button>
     <!-- </li>
         <li> -->
-            <button class="btn" type="button" id="crayon" data-divbtn="crayon" title="Crayon">
+            <button class="btn" type="button" id="crayon" data-divbtn="crayon" title="Crayon" display="hidden">
                 <img src="https://img.icons8.com/glyph-neue/20/000000/border-color.png"/> 
             </button>
         <!-- </li>
     <li> -->
-        <button class="btn" type="button" id="line" data-divbtn="line" title="Line">
+        <button class="btn" type="button" id="line" data-divbtn="line" title="Line" display="hidden">
             <img src="https://img.icons8.com/ios-filled/20/000000/line.png"/>    
         </button>
     <!-- </li>
@@ -58,9 +58,9 @@
         </button>
     <!-- </li>
         <li> -->
-        <button class="btn" type="button" id="eraser" data-divbtn="eraser" title="Eraser">
+        <!-- <button class="btn" type="button" id="eraser" data-divbtn="eraser" title="Eraser">
             <img src="https://img.icons8.com/ios-glyphs/20/000000/eraser.png"/>
-        </button>
+        </button> -->
          <!-- </li>
     <li> -->
         <button class="btn" type="button" id="clear" data-divbtn="clear" title="Clear">
@@ -119,16 +119,16 @@
     <div class="palette black" id="black" onclick="changeColors()"></div>
     <div class="palette black1" id="black1" onclick="changeColors()"></div>
     <div class="palette black2" id="black2" onclick="changeColors()"></div>
-    <div class="palette white" id="erase" onclick="changeColors()">
+    <div class="palette white" id="eraser" onclick="changeColors()">
         <i class="fas fa-eraser"  id="board-eraser"></i> 
     </div>
     <div id="img-data-div">
         <a href="#" id="img-file" class="downloads" download="image.png"><img src="https://img.icons8.com/ios-glyphs/20/000000/download--v1.png"/></a>
-    </div>
+    </div> 
     <div class="upload">
     <!-- <label for="uploader">Select file:</label> -->
-            <input type="file" id="uploader" size="4"/>
-        </div>
+        <input type="file" id="uploader" size="4"/>
+    </div>
 </div> 
    <!-- </div> -->
     <div id="brushWidth">
