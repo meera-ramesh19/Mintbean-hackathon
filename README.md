@@ -6,7 +6,7 @@
 ***"We don't make mistakes, just happy little accidents."*** -Bob Ross, 1942-1995
 ## Landing Page
 ![Landing page](landingPage.png)
-![](paintapp.png
+![](paintapp.png)
 
 ## Tools
 **Tech: HTML, CSS, JavaScript, and Canvas API**
